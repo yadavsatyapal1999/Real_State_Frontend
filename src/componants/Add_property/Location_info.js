@@ -1,11 +1,12 @@
 
-
+import "./Addproperty.css";
 
 export default function Location() {
 
 
-    return <div className="form">
-        <form>
+    return <form>
+    <div className="form">
+        
             <div className="form_first">
                 <label htmlFor="email">Email</label>
                 <br />
@@ -55,6 +56,6 @@ export default function Location() {
                 <input type="text" id="longitude" placeholder="Longitude" />
                 <br />
             </div>
-        </form>
     </div>
+    </form>
 }

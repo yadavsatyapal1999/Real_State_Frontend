@@ -1,10 +1,11 @@
 
-
+import "./Addproperty.css";
 
 export default function General_info(){
 
-    return <div className="form">
-        <form>
+    return  <form>
+        <div className="form">
+        
             <div className="form_first">
                 <label htmlFor="name">Name</label>
                 <br/>
@@ -52,6 +53,7 @@ export default function General_info(){
                 <option>?</option>
                 </select>
             </div>
+            </div>
         </form>
-    </div>
+    
 }

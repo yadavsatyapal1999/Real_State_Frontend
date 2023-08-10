@@ -1,13 +1,16 @@
 // This page takes basic detail of property in a form
 // This form is divided into two section
 
+import "./Addproperty.css";
+
 export default function BasicDetail() {
 
 
 
-    return <div className="form">
-        <form action="#">
-            <div className="from_first">
+    return <form action="#">
+     <div className="form">
+        
+            <div className="form_first">
                 <label htmlFor="property_type">Property Type</label>
                 <br />
                 <select id="property_type">
@@ -70,7 +73,7 @@ export default function BasicDetail() {
                     <option>Not Available</option>
                 </select>
             </div>
-
+            </div>
         </form>
-    </div>
+  
 }

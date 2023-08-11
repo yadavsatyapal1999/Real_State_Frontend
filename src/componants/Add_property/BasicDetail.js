@@ -1,19 +1,35 @@
 // This page takes basic detail of property in a form
-// This form is divided into two section
 
-import "./Addproperty.css";
+import { useContext } from "react";
+import Button from "./Button";
+import { PropertyContext } from "./ContextProvider";
+
 
 export default function BasicDetail() {
 
+const {BasicDetail,SetBasicDetail} = useContext(PropertyContext);
+// Adding property dynamically
+const addValue = (property, value) => {
+    SetBasicDetail({
+        ...BasicDetail,
+        [property]: value // updating property dynamically on the basis of id
+    });
+};
+
+  const handleClick = (event) => {
+    const elementId = event.target.id;
+    const elementValue = event.target.value; 
+    addValue(elementId, elementValue);
+};
 
 
     return <form action="#">
-     <div className="form">
-        
+        <div className="form">
+
             <div className="form_first">
                 <label htmlFor="property_type">Property Type</label>
                 <br />
-                <select id="property_type">
+                <select id="property_type" onChange={handleClick} >
                     <option value="select_property">Select Property Type</option>
                     <option value="Home">Home</option>
                     <option value="Plot">Plot</option>
@@ -22,11 +38,11 @@ export default function BasicDetail() {
                 <br />
                 <label htmlFor="price">Price</label>
                 <br />
-                <input type="number" id="price" />
+                <input type="number" id="price" onChange={handleClick}  />
                 <br />
-                <label htmlFor="age">Property Age</label>
+                <label htmlFor="property_age">Property Age</label>
                 <br />
-                <select id="age">
+                <select id="property_age" onChange={handleClick} >
                     <option>Select Property Age</option>
                     <option>20</option>
                     <option>35</option>
@@ -35,45 +51,50 @@ export default function BasicDetail() {
                     <option>80</option>
                 </select>
                 <br />
-                <label htmlFor="description">Property Description</label>
+                <label htmlFor="property_description">Property Description</label>
                 <br />
-                <input type="text" id="description" />
+                <input type="text" id="property_description" onChange={handleClick}  />
                 <br />
 
             </div>
             <div className="form_Second">
-                <label htmlFor="nego">Negotiable</label>
+                <label htmlFor="negotiable">Negotiable</label>
                 <br />
-                <select id="nego">
+                <select id="negotiable" onChange={handleClick} >
                     <option>Negotiable</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
                 <br />
-                <label htmlFor="owner">Ownership</label>
+                <label htmlFor="ownerShip">Ownership</label>
                 <br />
-                <select id="owner">
+                <select id="ownerShip" onChange={handleClick} >
                     <option >Select Ownership</option>
                     <option>Indvidual</option>
                     <option>Joint</option>
                 </select>
                 <br />
-                <label htmlFor="approved">Property Approved</label>
+                <label htmlFor="property_approved">Property Approved</label>
                 <br />
-                <select id="approved">
+                <select id="property_approved" onChange={handleClick} >
                     <option>Property Approved</option>
                     <option>Yes</option>
                     <option>No</option>
                 </select>
                 <br />
-                <label htmlFor="loan">Bank Loan</label>
+                <label htmlFor="bank_lone">Bank Loan</label>
                 <br />
-                <select id="loan">
+                <select id="bank_loan" onChange={handleClick} >
                     <option>Available</option>
                     <option>Not Available</option>
                 </select>
             </div>
-            </div>
-        </form>
-  
+        </div>
+        <Button
+            backWardPath={"/"}
+            forWardPath={"/addproperty/property_detail"}
+            children1={"Cancel"}
+            children2={"Save & Next"} />
+    </form>
+
 }

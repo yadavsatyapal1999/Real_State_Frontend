@@ -1,7 +1,27 @@
 
-import "./Addproperty.css";
+
+// This is property detail page of add property
+
+import { useContext } from "react"
+import Button from "./Button"
+import { PropertyContext } from "./ContextProvider"
 
 export default function PropertyDetail() {
+
+    const { PropertyDetail, SetPropertyDetail } = useContext(PropertyContext);
+    // Adding property dynamically
+    const addValue = (property, value) => {
+        SetPropertyDetail({
+            ...PropertyDetail,
+            [property]: value // updating property dynamically on the basis of id
+        });
+    };
+
+    const handleClick = (event) => {
+        const elementId = event.target.id;
+        const elementValue = event.target.value;
+        addValue(elementId, elementValue);
+    };
 
     return <form>
         <div className="form">
@@ -9,15 +29,15 @@ export default function PropertyDetail() {
             <div className="form_first">
                 <label htmlFor="length">Length(feet)</label>
                 <br />
-                <input type=" number" id="length" placeholder="Example 1000" />
+                <input type=" number" id="length" placeholder="Example 1000" onChange={handleClick} />
                 <br />
                 <label htmlFor="area">Area</label>
                 <br />
-                <input type="number" id="area" placeholder="Example 8000" />
+                <input type="number" id="area" placeholder="Example 8000" onChange={handleClick}  />
                 <br />
                 <label htmlFor="bhk">No. of BHK</label>
                 <br />
-                <select id="bhk">
+                <select id="bhk"onChange={handleClick}  >
                     <option>Select No. of BHK</option>
                     <option>1</option>
                     <option>2</option>
@@ -26,18 +46,18 @@ export default function PropertyDetail() {
                     <option>5</option>
                 </select>
                 <br />
-                <label htmlFor="attach">Attached</label>
+                <label htmlFor="attached">Attached</label>
                 <br />
 
-                <select id="attach">
+                <select id="attached" onChange={handleClick} >
                     <option>Attached</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
                 <br />
-                <label htmlFor="furnish">Furnished</label>
+                <label htmlFor="furnished">Furnished</label>
                 <br />
-                <select id="furnish">
+                <select id="furnished"onChange={handleClick}  >
                     <option>Select furnish</option>
                     <option>Fully Furnished</option>
                     <option>Partially Furnished</option>
@@ -46,7 +66,7 @@ export default function PropertyDetail() {
                 <br />
                 <label htmlFor="lift">Lift</label>
                 <br />
-                <select id="lift">
+                <select id="lift" onChange={handleClick} >
                     <option>Select Lift</option>
                     <option>Available</option>
                     <option>Not Available</option>
@@ -54,7 +74,7 @@ export default function PropertyDetail() {
                 <br />
                 <label htmlFor="facing">Facing</label>
                 <br />
-                <select id="facing">
+                <select id="facing" onChange={handleClick} >
                     <option>Select Facing</option>
                     <option>East</option>
                     <option>West</option>
@@ -64,22 +84,22 @@ export default function PropertyDetail() {
                 <br />
             </div>
             <div className="form_second">
-                <label htmlFor="width">Breath(in feet)</label>
+                <label htmlFor="breath">Breath(in feet)</label>
                 <br />
-                <input type="number" id="width" placeholder="Example 700" />
+                <input type="number" id="breath" placeholder="Example 700" onChange={handleClick}  />
                 <br />
-                <label htmlFor="unit">Area Unit</label>
+                <label htmlFor="area_unit">Area Unit</label>
                 <br />
-                <select id="unit">
+                <select id="area_unit" onChange={handleClick} >
                     <option>Area Unit</option>
                     <option>Sq. Feet</option>
                     <option>Sq. Inch</option>
                     <option>Sq. Meter</option>
                 </select>
                 <br />
-                <label htmlFor="floor">No. of floor</label>
+                <label htmlFor="floor" >No. of floor</label>
                 <br />
-                <select id="floor">
+                <select id="floor" onChange={handleClick} >
                     <option>Select No. of Floor</option>
                     <option>1</option>
                     <option>2</option>
@@ -88,9 +108,9 @@ export default function PropertyDetail() {
                     <option>5</option>
                 </select>
                 <br />
-                <label htmlFor="toilet">Western Toilet</label>
+                <label htmlFor="western">Western Toilet</label>
                 <br />
-                <select id="toilet">
+                <select id="western"onChange={handleClick}  >
                     <option>Select Western Toilet</option>
                     <option>Avaialbe</option>
                     <option>Not Available</option>
@@ -98,16 +118,21 @@ export default function PropertyDetail() {
                 <br />
                 <label htmlFor="parking">Car Parking</label>
                 <br />
-                <select id="parking">
+                <select id="parking" onChange={handleClick} >
                     <option>Select Car Parking</option>
                     <option>Avaialbe</option>
                     <option>Not Available</option>
                 </select>
                 <br />
-                <label htmlFor="electric">Electricity</label>
+                <label htmlFor="electricity">Electricity</label>
                 <br />
-                <input type="text" id="electric" placeholder="Example 3 phase" />
+                <input type="text" id="electricity" placeholder="Example 3 phase" onChange={handleClick}  />
             </div>
         </div>
+        <Button
+            backWardPath={"/addproperty/basic_detail"}
+            forWardPath={"/addproperty/general_info"}
+            children1={"Previous"}
+            children2={"Save & Next"} />
     </form>
 }

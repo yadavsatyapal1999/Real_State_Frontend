@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Src
+/src/componants/Add_property/testapi.js
+/src/componants/Add_property/compare.txt

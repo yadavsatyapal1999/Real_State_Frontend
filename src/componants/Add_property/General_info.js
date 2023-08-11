@@ -1,59 +1,84 @@
 
-import "./Addproperty.css";
+import { useContext } from "react";
+import Button from "./Button";
+import { PropertyContext } from "./ContextProvider";
 
-export default function General_info(){
+export default function General_info() {
 
-    return  <form>
+    const { General_info, SetGeneral_info } = useContext(PropertyContext);
+    // Adding property dynamically
+    const addValue = (property, value) => {
+        SetGeneral_info({
+            ...General_info,
+            [property]: value // updating property dynamically on the basis of id
+        });
+    };
+
+    const handleClick = (event) => {
+        const elementId = event.target.id;
+        const elementValue = event.target.value;
+        addValue(elementId, elementValue);
+    };
+    return <form>
         <div className="form">
-        
+
             <div className="form_first">
-                <label htmlFor="name">Name</label>
-                <br/>
-                <input type="text" id="name" placeholder="Owner Name"/>
-                <br/>
-                <label htmlFor="posted">Posted By</label>
-                <br/>
-                <select id="posted">
+                <label htmlFor="owner_name">Name</label>
+                <br />
+                <input type="text" id="owner_name" placeholder="Owner Name" onChange={handleClick} />
+                <br />
+                <label htmlFor="postedby">Posted By</label>
+                <br />
+                <select id="postedby" onChange={handleClick} >
                     <option>Posted By</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
-                <br/>
+                <br />
                 <label htmlFor="featuerd">Featured Package</label>
-                <br/>
-                <select id="feature">
+                <br />
+                <select id="featured" onChange={handleClick}  >
                     <option>Please Select</option>
                     <option>?</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
-                <br/>
-                <input type="file" id="photo"/>
-                <label htmlFor="photo">Add Photo</label>
-                <br/>
+                <br />
+                {/* This function to be handled by multer no addin 
+                now will do it later*/}
+                <input type="file" id="image" />
+                <label htmlFor="image" >Add Photo</label>
+                <br />
             </div>
-            <div className="form_second">
-                <label htmlFor="number">Mobile</label>
-                <br/>
-                <input type="number" id="number" placeholder="Enter Mobile Number"/>
-                <br/>
-                <label htmlFor="sale">Sale Type</label>
-                <br/>
-                <select id="Sale">
-                <option>Please Select</option>
-                <option>?</option>
-                <option>?</option>
+            <div className="form_second" >
+                <label htmlFor="mobile">Mobile</label>
+                <br />
+                <input type="number" id="mobile"
+                    placeholder="Enter Mobile Number"
+                    onChange={handleClick} />
+                <br />
+                <label htmlFor="saletype">Sale Type</label>
+                <br />
+                <select id="saletype" onChange={handleClick} >
+                    <option>Please Select</option>
+                    <option>?</option>
+                    <option>?</option>
                 </select>
-                <br/>
-                <label htmlFor="ppd">PPD Package</label>
-                <br/>
-                <select id="ppd">
-                <option>Please Select</option>
-                <option>?</option>
-                <option>?</option>
+                <br />
+                <label htmlFor="ppdpackage">PPD Package</label>
+                <br />
+                <select id="ppdpackage" onChange={handleClick} >
+                    <option>Please Select</option>
+                    <option>?</option>
+                    <option>?</option>
                 </select>
             </div>
-            </div>
-        </form>
-    
+        </div>
+        <Button
+            backWardPath={"/addproperty/property_detail"}
+            forWardPath={"/addproperty/location_info"}
+            children1={"Previous"}
+            children2={"Save & Next"} />
+    </form>
+
 }

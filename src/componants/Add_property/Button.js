@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function Button({backWardPath,forWardPath,children1,children2}){
 const navigate = useNavigate();
     return <div>
-        <button  onClick={()=>{navigate(backWardPath)}}>{children1}</button>
-        {children2 != null || children2 != undefined ? <button onClick={()=>{navigate(forWardPath)}}>{children2}</button> :<></>}
+        <button  className="btn1" onClick={()=>{navigate(backWardPath)}}>{children1}</button>
+        {children2 != null || children2 != undefined ? <button className="btn2" onClick={()=>{navigate(forWardPath)}}>{children2}</button> :<></>}
         
     </div>
 }

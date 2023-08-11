@@ -2,7 +2,6 @@
 // This file have all path of react routing for Add property page
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useContext } from "react";
 import './Addproperty.css'
 import BasicDetail from './BasicDetail'
 import General_info from './General_info'
@@ -16,15 +15,15 @@ export default function AddpropertyRouter() {
 
 
     return <div>
-        
+
         <BrowserRouter>
-        <h2>Add New Property</h2>
-        <div>
-            <span>Basic Detail   </span>
-            <span>Property Detail   </span>
-            <span>General Info   </span>
-            <span>Location Info   </span>
-        </div>
+            <h2 className="prop_heading">Add New Property</h2>
+            <div className="page_indicator" >
+                <div className="indi">Basic Detail</div>
+                <div className="indi">Property Detail</div>
+                <div className="indi">General Info</div>
+                <div className="indi">Location Info</div>
+            </div>
             <Routes>
                 <Route exact path="/addproperty/basic_detail" element={<BasicDetail />} />
                 <Route exact path="/addproperty/property_detail" element={<PropertyDetail />} />

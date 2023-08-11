@@ -1,25 +1,140 @@
 .form {
-    display: flex;
-    margin: 20px;
-    position: relative;
-    z-index: 15;
+    width: 1201px;
+    height: 656px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 10px 14px 70px 0px rgba(0, 0, 0, 0.03);
+    display: flex
 }
 
+/* Left side input margin*/
 .form_first {
-    margin-right: 30px;
+    margin-left: 61px;
+    margin-right: 41px;
 }
 
+/* Input tag */
 input {
-    width: 300px;
-    height: 30px;
-    font-size: 15px;
+    width: 515px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #C3C3C3;
+
 }
 
+/* Select Tag */
 select {
-    width: 310px;
-    height: 35px;
-    font-size: 15px
+    width: 520px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #C3C3C3;
+    color: #7D7D7D;
 }
-span{
+
+/* Option Style*/
+
+option {
+    color: #7D7D7D;
+    font-family: Source Sans Pro;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+span {
     margin-right: 15px;
+}
+
+/*  Label style*/
+label {
+    color: #7D7D7D;
+    font-family: Source Sans Pro;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+/*   Add property heading style*/
+.prop_heading {
+    color: #7D7D7D;
+    font-family: Source Sans Pro;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+/* Right side button*/
+.btn2 {
+    width: 187px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 500px;
+    background: #4C57B6;
+    box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    font-family: Source Sans Pro;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/* left side button style*/
+.btn1 {
+    width: 187px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 500px;
+    background: #6AB4F8;
+    box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+    font-family: Source Sans Pro;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+/*Overriding input property for image input*/
+#image {
+    width: 105px;
+    height: 105px;
+    flex-shrink: 0;
+
+    filter: drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.13));
+    border-radius: 50%;
+    background-color: #6AB4F8;
+}
+
+/* all four page indicator*/
+.page_indicator {
+    width: 1115px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 500px;
+    background: #FFF;
+    box-shadow: 10px 14px 70px 0px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-around;
+    margin-left: 95px;
+}
+
+/*Text inside page indicator*/
+.indi {
+    color: #BFBFBF;
+    font-family: Source Sans Pro;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }

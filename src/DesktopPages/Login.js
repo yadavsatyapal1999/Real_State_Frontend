@@ -11,11 +11,11 @@ const LogIn = () => {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault(e);
-    const { email, password } = details;
+    const { userid, password } = details;
     let url = "http://localhost:8080/user/v1/login";
     axios
       .post(url, {
-        email: email,
+        email: userid,
         password: password,
       })
       .then((res) => {

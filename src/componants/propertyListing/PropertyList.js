@@ -53,12 +53,11 @@ const PropertyList = () => {
 
         axios
             .patch(
-                `http://localhost:8080/prop/v1/sold//${details._id}`,
+                `http://localhost:8080/prop/v1/sold/${details._id}`,
                 data,
                 {
                     headers: {
-                        token: token,
-                        id: id,
+                        'Authorization' : token
                     },
                 }
             )

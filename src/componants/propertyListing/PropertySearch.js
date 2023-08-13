@@ -16,7 +16,7 @@ const PropertySearch = ({ values }) => {
 
     axios
       .patch(
-        `https://tenxmanikanta-syed-bindhu.onrender.com/api/property/sold/${details._id}`,
+        `http://localhost:8080/pro/v1/sold/${details._id}`,
         data,
         {
           headers: {

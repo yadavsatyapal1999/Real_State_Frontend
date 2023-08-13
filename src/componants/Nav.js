@@ -3,6 +3,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import "../styles/nav.css"
 
 const Nav = () => {
+  const name = localStorage.getItem("name").toUpperCase();
   return (
     <>
       <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: 'center', fontWeight: "400px", fontSize: "20px", color: "#bcbcbc", padding: "0 2.8rem", marginTop: "20px" }}>
@@ -31,7 +32,7 @@ const Nav = () => {
                   <span
                     className="ms-1 d-none d-sm-inline"
                     style={{ marginTop: "5px", background:"#6AB4F8" }}
-                  >Username</span>
+                  >{name}</span>
 
                 </button>
                 <div
@@ -43,7 +44,7 @@ const Nav = () => {
                   
                   <a
                     className="dropdown-item"
-                    // onClick={() => localStorage.clear()}
+                    onClick={() => localStorage.clear()}
                     href="/"
                   >
                     Logout

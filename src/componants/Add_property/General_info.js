@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { PropertyContext } from "./ContextProvider";
+import PageIndicator from "./PageIndicator";
 
 export default function General_info() {
 
@@ -27,7 +28,9 @@ export default function General_info() {
     ...General_info
   })
     }
-    return <form className="outer_form" >
+    return <div className="router">
+    <PageIndicator/>
+    <form className="outer_form" >
         <div className="form">
 
             <div className="form_first">
@@ -91,5 +94,5 @@ export default function General_info() {
             children2={"Save & Next"}
             forward_action={mergeProperty} />
     </form>
-
+    </div>
 }

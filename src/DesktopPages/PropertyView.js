@@ -255,7 +255,10 @@ function PropertyView() {
         </button>
         <button
           type="button"
-          onClick={() => setPage(2)}
+          onClick={() => {
+            setPage(2)
+           
+          }}
           className="btn active"
           style={{
             fontSize: "20px",

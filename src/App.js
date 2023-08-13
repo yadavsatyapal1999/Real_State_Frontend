@@ -2,8 +2,10 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Home } from "./DesktopPages/Home";
+import  Home  from "./DesktopPages/Home";
 import SideBar from "./componants/Sidebar";
+import LogIn from './DesktopPages/Login';
+import PropertyView from './DesktopPages/PropertyView';
 
 
 function App() {

@@ -5,7 +5,7 @@ import { PropertyContext } from "./ContextProvider";
 
 export default function General_info() {
 
-    const { General_info, SetGeneral_info } = useContext(PropertyContext);
+    const { General_info, SetGeneral_info,SetAddProperty,BasicDetail, PropertyDetail } = useContext(PropertyContext);
     // Adding property dynamically
     const addValue = (property, value) => {
         SetGeneral_info({
@@ -19,26 +19,35 @@ export default function General_info() {
         const elementValue = event.target.value;
         addValue(elementId, elementValue);
     };
-    return <form>
+
+    const mergeProperty = ()=>{
+  SetAddProperty({
+    ...BasicDetail,
+    ...PropertyDetail,
+    ...General_info
+  })
+    }
+    return <form className="outer_form" >
         <div className="form">
 
             <div className="form_first">
                 <label htmlFor="owner_name">Name</label>
                 <br />
-                <input type="text" id="owner_name" placeholder="Owner Name" onChange={handleClick} />
+                <input type="text" id="owner_name" placeholder="Owner Name" onChange={handleClick}  required/>
                 <br />
                 <label htmlFor="postedby">Posted By</label>
                 <br />
                 <select id="postedby" onChange={handleClick} >
-                    <option>Posted By</option>
-                    <option>?</option>
-                    <option>?</option>
+                    <option disabled selected >Posted By</option>
+                    <option>Owner</option>
+                    <option>Sales Agent</option>
+                    <option>Dealer</option>
                 </select>
                 <br />
                 <label htmlFor="featuerd">Featured Package</label>
                 <br />
                 <select id="featured" onChange={handleClick}  >
-                    <option>Please Select</option>
+                    <option disabled selected >Please Select</option>
                     <option>?</option>
                     <option>?</option>
                     <option>?</option>
@@ -55,12 +64,13 @@ export default function General_info() {
                 <br />
                 <input type="number" id="mobile"
                     placeholder="Enter Mobile Number"
-                    onChange={handleClick} />
+                    onChange={handleClick}
+                    required  minLength={10} maxLength={10} />
                 <br />
                 <label htmlFor="saletype">Sale Type</label>
                 <br />
                 <select id="saletype" onChange={handleClick} >
-                    <option>Please Select</option>
+                    <option disabled selected >Please Select</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
@@ -68,7 +78,7 @@ export default function General_info() {
                 <label htmlFor="ppdpackage">PPD Package</label>
                 <br />
                 <select id="ppdpackage" onChange={handleClick} >
-                    <option>Please Select</option>
+                    <option disabled selected>Please Select</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
@@ -78,7 +88,8 @@ export default function General_info() {
             backWardPath={"/addproperty/property_detail"}
             forWardPath={"/addproperty/location_info"}
             children1={"Previous"}
-            children2={"Save & Next"} />
+            children2={"Save & Next"}
+            forward_action={mergeProperty} />
     </form>
 
 }

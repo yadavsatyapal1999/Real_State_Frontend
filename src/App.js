@@ -1,8 +1,7 @@
 
-
+import {ContextFunction} from '../src/componants/Add_property/ContextProvider';
 import './App.css';
-import { Home } from "./DesktopPages/Home";
-import SideBar from "./componants/Sidebar";
+
 
 
 function App() {

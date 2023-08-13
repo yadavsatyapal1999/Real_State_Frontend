@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { PropertyContext } from "./ContextProvider";
-
+import PageIndicator from "./PageIndicator";
 
 export default function BasicDetail() {
 
@@ -23,7 +23,9 @@ const addValue = (property, value) => {
 };
 
 
-    return <form action="#" className="outer_form" >
+    return <div className="router">
+    <PageIndicator/>
+    <form action="#" className="outer_form" >
         <div className="form">
 
             <div className="form_first">
@@ -92,10 +94,10 @@ const addValue = (property, value) => {
             </div>
         </div>
         <Button
-            backWardPath={"/"}
+            backWardPath={"/home"}
             forWardPath={"/addproperty/property_detail"}
             children1={"Cancel"}
             children2={"Save & Next"} />
     </form>
-
+    </div>
 }

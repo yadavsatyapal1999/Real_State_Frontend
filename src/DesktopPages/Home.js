@@ -174,7 +174,7 @@ const HomePage = () => {
             </div>
             <button
               type="button"
-              onClick={() => navigate("/addproperty")}
+              onClick={() => navigate("/addproperty/basic_detail")}
               className="btn btn-info"
               style={{
                 fontSize: "larger",

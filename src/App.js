@@ -1,14 +1,22 @@
 
-import {ContextFunction} from '../src/componants/Add_property/ContextProvider';
-import './App.css';
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { Home } from "./DesktopPages/Home";
+import SideBar from "./componants/Sidebar";
 
 
 function App() {
   return (
-    <div >
-
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<LogIn/>}/>
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/propertyView' element={<PropertyView/>}/>
+      {/* <Route path='/editproperty' element={<Editproperty/>}/> */}
+    </Routes>
+  </BrowserRouter>
+ 
   );
 }
 

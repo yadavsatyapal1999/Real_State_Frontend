@@ -23,14 +23,14 @@ const addValue = (property, value) => {
 };
 
 
-    return <form action="#">
+    return <form action="#" className="outer_form" >
         <div className="form">
 
             <div className="form_first">
                 <label htmlFor="property_type">Property Type</label>
                 <br />
-                <select id="property_type" onChange={handleClick} >
-                    <option value="select_property">Select Property Type</option>
+                <select id="property_type"  onChange={handleClick} required >
+                    <option value="select_property" disabled selected >Select Property Type</option>
                     <option value="Home">Home</option>
                     <option value="Plot">Plot</option>
                     <option value="Apartment">Apartment</option>
@@ -38,12 +38,12 @@ const addValue = (property, value) => {
                 <br />
                 <label htmlFor="price">Price</label>
                 <br />
-                <input type="number" id="price" onChange={handleClick}  />
+                <input type="number" id="price" onChange={handleClick}  required  />
                 <br />
                 <label htmlFor="property_age">Property Age</label>
                 <br />
-                <select id="property_age" onChange={handleClick} >
-                    <option>Select Property Age</option>
+                <select id="property_age" onChange={handleClick} required  >
+                    <option disabled selected>Select Property Age</option>
                     <option>20</option>
                     <option>35</option>
                     <option>50</option>
@@ -61,15 +61,15 @@ const addValue = (property, value) => {
                 <label htmlFor="negotiable">Negotiable</label>
                 <br />
                 <select id="negotiable" onChange={handleClick} >
-                    <option>Negotiable</option>
+                    <option disabled selected>Negotiable</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                 </select>
                 <br />
                 <label htmlFor="ownerShip">Ownership</label>
                 <br />
-                <select id="ownerShip" onChange={handleClick} >
-                    <option >Select Ownership</option>
+                <select id="ownerShip" onChange={handleClick} required  >
+                    <option disabled selected >Select Ownership</option>
                     <option>Indvidual</option>
                     <option>Joint</option>
                 </select>
@@ -77,14 +77,15 @@ const addValue = (property, value) => {
                 <label htmlFor="property_approved">Property Approved</label>
                 <br />
                 <select id="property_approved" onChange={handleClick} >
-                    <option>Property Approved</option>
+                    <option disabled selected>Property Approved</option>
                     <option>Yes</option>
                     <option>No</option>
                 </select>
                 <br />
                 <label htmlFor="bank_lone">Bank Loan</label>
                 <br />
-                <select id="bank_loan" onChange={handleClick} >
+                <select id="bank_loan" onChange={handleClick} required  >
+                    <option disabled selected>Select Bank Loan</option>
                     <option>Available</option>
                     <option>Not Available</option>
                 </select>

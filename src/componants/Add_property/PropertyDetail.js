@@ -23,22 +23,22 @@ export default function PropertyDetail() {
         addValue(elementId, elementValue);
     };
 
-    return <form>
+    return <form className="outer_form">
         <div className="form">
 
             <div className="form_first">
                 <label htmlFor="length">Length(feet)</label>
                 <br />
-                <input type=" number" id="length" placeholder="Example 1000" onChange={handleClick} />
+                <input type=" number" id="length" placeholder="Example 1000" onChange={handleClick} required  />
                 <br />
                 <label htmlFor="area">Area</label>
                 <br />
-                <input type="number" id="area" placeholder="Example 8000" onChange={handleClick}  />
+                <input type="number" id="area" placeholder="Example 8000"  disabled />
                 <br />
                 <label htmlFor="bhk">No. of BHK</label>
                 <br />
-                <select id="bhk"onChange={handleClick}  >
-                    <option>Select No. of BHK</option>
+                <select id="bhk" onChange={handleClick} required  >
+                    <option disabled selected>Select No. of BHK</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -49,16 +49,16 @@ export default function PropertyDetail() {
                 <label htmlFor="attached">Attached</label>
                 <br />
 
-                <select id="attached" onChange={handleClick} >
-                    <option>Attached</option>
+                <select id="attached" onChange={handleClick} multiple >
+                    <option disabled selected >Attached</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
                 <br />
                 <label htmlFor="furnished">Furnished</label>
                 <br />
-                <select id="furnished"onChange={handleClick}  >
-                    <option>Select furnish</option>
+                <select id="furnished" onChange={handleClick} required  >
+                    <option disabled selected >Select furnish</option>
                     <option>Fully Furnished</option>
                     <option>Partially Furnished</option>
                     <option>Unfurnished</option>
@@ -67,15 +67,15 @@ export default function PropertyDetail() {
                 <label htmlFor="lift">Lift</label>
                 <br />
                 <select id="lift" onChange={handleClick} >
-                    <option>Select Lift</option>
+                    <option disabled selected>Select Lift</option>
                     <option>Available</option>
                     <option>Not Available</option>
                 </select>
                 <br />
                 <label htmlFor="facing">Facing</label>
                 <br />
-                <select id="facing" onChange={handleClick} >
-                    <option>Select Facing</option>
+                <select id="facing" onChange={handleClick} required >
+                    <option disabled selected >Select Facing</option>
                     <option>East</option>
                     <option>West</option>
                     <option>North</option>
@@ -86,12 +86,12 @@ export default function PropertyDetail() {
             <div className="form_second">
                 <label htmlFor="breath">Breath(in feet)</label>
                 <br />
-                <input type="number" id="breath" placeholder="Example 700" onChange={handleClick}  />
+                <input type="number" id="breath" placeholder="Example 700" onChange={handleClick} required  />
                 <br />
                 <label htmlFor="area_unit">Area Unit</label>
                 <br />
-                <select id="area_unit" onChange={handleClick} >
-                    <option>Area Unit</option>
+                <select id="area_unit" onChange={handleClick} required >
+                    <option disabled selected>Area Unit</option>
                     <option>Sq. Feet</option>
                     <option>Sq. Inch</option>
                     <option>Sq. Meter</option>
@@ -100,7 +100,7 @@ export default function PropertyDetail() {
                 <label htmlFor="floor" >No. of floor</label>
                 <br />
                 <select id="floor" onChange={handleClick} >
-                    <option>Select No. of Floor</option>
+                    <option disabled selected >Select No. of Floor</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -110,8 +110,8 @@ export default function PropertyDetail() {
                 <br />
                 <label htmlFor="western">Western Toilet</label>
                 <br />
-                <select id="western"onChange={handleClick}  >
-                    <option>Select Western Toilet</option>
+                <select id="western" onChange={handleClick}  >
+                    <option disabled selected>Select Western Toilet</option>
                     <option>Avaialbe</option>
                     <option>Not Available</option>
                 </select>
@@ -119,14 +119,14 @@ export default function PropertyDetail() {
                 <label htmlFor="parking">Car Parking</label>
                 <br />
                 <select id="parking" onChange={handleClick} >
-                    <option>Select Car Parking</option>
+                    <option disabled selected >Select Car Parking</option>
                     <option>Avaialbe</option>
                     <option>Not Available</option>
                 </select>
                 <br />
                 <label htmlFor="electricity">Electricity</label>
                 <br />
-                <input type="text" id="electricity" placeholder="Example 3 phase" onChange={handleClick}  />
+                <input type="text" id="electricity" placeholder="Example 3 phase" onChange={handleClick} />
             </div>
         </div>
         <Button

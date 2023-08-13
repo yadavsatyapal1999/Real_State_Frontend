@@ -1,21 +1,25 @@
 
-
 // This is location information page of Add property
 
 import { useContext } from "react";
 import Button from "./Button"
 import { PropertyContext } from "./ContextProvider";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export default function Location() {
 
-    const { Location_info, SetLocation_info, SetAddProperty, BasicDetail, PropertyDetail, } = useContext(PropertyContext);
+    const { SetAddProperty,  AddProperty,Loader,SetLoader } = useContext(PropertyContext);
+const navigate = useNavigate();
+
     // Adding property dynamically
     const addValue = (property, value) => {
-        SetLocation_info({
-            ...Location_info,
+        SetAddProperty({
+            ...AddProperty,
             [property]: value // updating property dynamically on the basis of id
         });
     };
+
 
     const handleClick = (event) => {
         const elementId = event.target.id;
@@ -23,13 +27,32 @@ export default function Location() {
         addValue(elementId, elementValue);
     };
 
-    return <form onSubmit={(e) => {
-        e.preventDefault();
-        SetAddProperty({  // merging all object into single object
-            ...BasicDetail,
-            ...PropertyDetail,
-            ...Location_info
-        })
+    const handleSubmit = async (event) => {
+       
+        const data = AddProperty
+        try {
+            
+            const response = await axios.post("http://localhost:8080/prop/v1/addproperty", data);
+            
+            if (response.status == 200) {
+               
+                alert("Data Saved sucessFully");
+                
+            } else {
+                
+                alert("unable to save data make sure all required data filled");
+            }
+        }
+        catch (error) {
+           
+            alert("Unable to save Please ensure All data Are Filled")
+        }
+
+    }
+
+    return <form className="outer_form" onSubmit={(event) => {
+
+        handleSubmit(event);
 
     }} >
         <div className="form">
@@ -37,19 +60,19 @@ export default function Location() {
             <div className="form_first">
                 <label htmlFor="email">Email</label>
                 <br />
-                <input type="email" id="email" placeholder="Email" onChange={handleClick} />
+                <input type="email" id="email" placeholder="Email" onChange={handleClick} required />
                 <br />
                 <label htmlFor="addressarea">Area</label>
                 <br />
                 <select id="addressarea" onChange={handleClick}  >
-                    <option>Select Area</option>
-                    <option>?</option>
-                    <option>?</option>
+                    <option disabled selected >Select Area</option>
+                    <option>Urban</option>
+                    <option>rural</option>
                 </select>
                 <br />
                 <label htmlFor="address">Address</label>
                 <br />
-                <input type="text" id="address" placeholder="Address" onChange={handleClick} />
+                <input type="text" id="address" placeholder="Address" onChange={handleClick} required />
                 <br />
                 <label htmlFor="latitude">Latitude</label>
                 <br />
@@ -59,17 +82,17 @@ export default function Location() {
             <div className="form_second">
                 <label htmlFor="city">City</label>
                 <br />
-                <select id="city" onChange={handleClick} >
-                    <option>Select City</option>
-                    <option>?</option>
-                    <option>?</option>
+                <select id="city" onChange={handleClick} required >
+                    <option disabled selected>Select City</option>
+                    <option>Gurgaon</option>
+                    <option>Delhi</option>
                 </select>
                 <br />
 
                 <label htmlFor="pincode">Pincode</label>
                 <br />
-                <select id="pincode" onChange={handleClick} >
-                    <option>Select Pincode</option>
+                <select id="pincode" onChange={handleClick} required  >
+                    <option disabled selected >Select Pincode</option>
                     <option>?</option>
                     <option>?</option>
                 </select>
@@ -88,7 +111,8 @@ export default function Location() {
             backWardPath={"/addproperty/general_info"}
             forWardPath={"/addproperty"}
             children1={"Previous"}
+            children2={"Add Property"}
         />
-        <button type="submit">Add Property</button>
+
     </form>
-}
+} 

@@ -14,7 +14,7 @@ export default function AddpropertyRouter() {
 
 
 
-    return <div>
+    return <div className="router">
 
         <BrowserRouter>
             <h2 className="prop_heading">Add New Property</h2>

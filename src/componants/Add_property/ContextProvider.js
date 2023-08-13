@@ -28,7 +28,8 @@ export function ContextFunction() {
         // It will store all detail od property and this data will be saved into data base
     })
    
-    console.log(AddProperty);
+ 
+
     
     return <PropertyContext.Provider
         value={{
@@ -43,6 +44,6 @@ export function ContextFunction() {
             AddProperty,
             SetAddProperty
         }}>
-        <AddpropertyRouter/>
+    <AddpropertyRouter/>
     </PropertyContext.Provider>
 }

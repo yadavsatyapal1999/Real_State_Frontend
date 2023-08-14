@@ -2,14 +2,29 @@
 
 // This is property detail page of add property
 
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import Button from "./Button"
 import { PropertyContext } from "./ContextProvider"
 import PageIndicator from "./PageIndicator";
 
 export default function PropertyDetail() {
+    /* const [area,SetArea] = useState(0);
+     const [length,SetLength] = useState();
+     const [breath,SetBreath]=useState();
+     function CalculateArea(){
+         if(length !== undefined || length!== null){
+             if(breath !== undefined || breath !== null){
+                 SetArea(Number(length) * Number(breath))
+             }
+         }
+     }
+ useEffect(()=>{
+     CalculateArea();
+ },[length,breath])*/
 
     const { PropertyDetail, SetPropertyDetail } = useContext(PropertyContext);
+    /* Logic to calculate area*/
+
     // Adding property dynamically
     const addValue = (property, value) => {
         SetPropertyDetail({
@@ -17,7 +32,7 @@ export default function PropertyDetail() {
             [property]: value // updating property dynamically on the basis of id
         });
     };
-
+    console.log(PropertyDetail)
     const handleClick = (event) => {
         const elementId = event.target.id;
         const elementValue = event.target.value;
@@ -32,11 +47,15 @@ export default function PropertyDetail() {
                 <div className="form_first">
                     <label htmlFor="length">Length(feet)</label>
                     <br />
-                    <input type=" number" id="length" placeholder="Example 1000" onChange={handleClick} required />
+                    <input type=" number" id="length" placeholder="Example 1000" onChange={(e) => {
+                        handleClick(e);
+
+
+                    }} required />
                     <br />
                     <label htmlFor="area">Area</label>
                     <br />
-                    <input type="number" id="area" placeholder="Example 8000" disabled />
+                    <input type="number" id="area" onChange={handleClick} />
                     <br />
                     <label htmlFor="bhk">No. of BHK</label>
                     <br />
@@ -54,8 +73,8 @@ export default function PropertyDetail() {
 
                     <select id="attached" onChange={handleClick} multiple >
                         <option disabled selected >Attached</option>
-                        <option>?</option>
-                        <option>?</option>
+                        <option>Yes</option>
+                        <option>No</option>
                     </select>
                     <br />
                     <label htmlFor="furnished">Furnished</label>
@@ -89,7 +108,11 @@ export default function PropertyDetail() {
                 <div className="form_second">
                     <label htmlFor="breath">Breath(in feet)</label>
                     <br />
-                    <input type="number" id="breath" placeholder="Example 700" onChange={handleClick} required />
+                    <input type="number" id="breath" placeholder="Example 700" onChange={(e) => {
+                        handleClick(e);
+
+                    }
+                    } required />
                     <br />
                     <label htmlFor="area_unit">Area Unit</label>
                     <br />

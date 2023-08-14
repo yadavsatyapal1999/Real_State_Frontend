@@ -109,7 +109,7 @@ const HomePage = () => {
     axios
       .get(url)
       .then((res) => {
-        setValues(res.data.details);
+        setValues(res.data);
         setSearchId("");
       })
       .catch((e) => {
@@ -163,7 +163,7 @@ const HomePage = () => {
                       cursor: "pointer",
                       borderTopRightRadius: "25px",
                       borderBottomRightRadius: "25px",
-                      padding: "10px"
+                      padding: "20px"
                     }}
                     className="input-group-text"
                     id="basic-addon2"

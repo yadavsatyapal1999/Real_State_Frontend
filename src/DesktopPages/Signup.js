@@ -22,8 +22,9 @@ export default function SignUp() {
                 const resp = await axios.post("http://localhost:8080/user/v1/register", data)
                     .then(res => {
                         if(res.status == 200){
-                            localStorage.setItem("unique_id", res.data.data.unique_id);
-                            window.alert("data Saved Sucessfully")
+                            // localStorage.setItem("unique_id", res.data.data.unique_id);
+                            window.alert("data Saved Sucessfully");
+                            
                         }else{
                            window.alert("failed");
                         }

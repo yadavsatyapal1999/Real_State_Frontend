@@ -71,7 +71,7 @@ export default function PropertyDetail() {
                     <label htmlFor="attached">Attached</label>
                     <br />
 
-                    <select id="attached" onChange={handleClick} multiple >
+                    <select id="attached" onChange={handleClick}  >
                         <option disabled selected >Attached</option>
                         <option>Yes</option>
                         <option>No</option>

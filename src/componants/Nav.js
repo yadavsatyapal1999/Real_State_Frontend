@@ -4,7 +4,7 @@ import "../styles/nav.css"
 
 const Nav = () => {
   const name = localStorage.getItem("name").toUpperCase();
-  const userId = localStorage.getItem("userID");
+  const userId = localStorage.getItem("userId");
   return (
     <>
       <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: 'center', fontWeight: "400px", fontSize: "20px", color: "#bcbcbc", padding: "0 2.8rem", marginTop: "20px" }}>

@@ -24,7 +24,7 @@ const LogIn = () => {
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("token", res.data.Token); // Modified to get token
-        localStorage.setItem("userID", res.data.userId);
+        localStorage.setItem("userId", res.data.userId);
         navigate("/home");
       })
       .catch((err) => console.log(err));

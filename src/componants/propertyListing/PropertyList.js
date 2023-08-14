@@ -19,6 +19,7 @@ const PropertyList = () => {
         setPath(`http://localhost:8080/${data.image}`);
         setPathFlag(true);
         // console.log(path);
+        console.log(data.image);
     }
 
     let url = "http://localhost:8080/prop/v1/getproperty";
@@ -28,7 +29,8 @@ const PropertyList = () => {
         fetch(url, {
             method: "GET",
             headers: {
-                'Authorization': token
+                'Authorization': token,
+                'Content-Type': 'multipart/form-data'
             },
         })
             .then((res) => {
@@ -104,7 +106,7 @@ const PropertyList = () => {
                                         <th scope="col">{properties.mobile}</th>
                                         <th scope="col">{properties.area}</th>
                                         <th scope="col">{properties.views}</th>
-                                        <th onClick={() => setPath(`http://localhost:8080/${properties.image}`)} scope='col'>
+                                        <th onClick={() =>update(properties)} scope='col'>
                                             <button style={{ backgroundColor: "#F5FAF5", color: "#416899", borderRadius: "5px", border: "1px solid rgb(228 233 233)" }} className="soldbtn">{properties.status}</button>
                                         </th>
                                         <th style={{}} scope='col'>{properties.daysleft}</th>

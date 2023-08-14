@@ -60,7 +60,7 @@ export default function General_info() {
                 <br />
                 {/* This function to be handled by multer no addin 
                 now will do it later*/}
-                <input type="file" id="image" name="propertyimage" onChange={(e)=>{
+                <input type="file" name="propertyimage" onChange={(e)=>{
                     SetFile(e.target.files[0]);
                 }} />
                 <label htmlFor="image"  >Add Photo</label>

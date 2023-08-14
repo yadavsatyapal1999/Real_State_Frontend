@@ -19,10 +19,11 @@ const LogIn = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        console.log("login resp data")
+        console.log(res.data.Token);
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("name", res.data.name);
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.Token); // Modified to get token
         localStorage.setItem("userID", res.data.userId);
         navigate("/home");
       })

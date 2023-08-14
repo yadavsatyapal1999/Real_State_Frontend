@@ -1,7 +1,7 @@
 
 // This is location information page of Add property
 
-import { useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 import Button from "./Button"
 import { PropertyContext } from "./ContextProvider";
 import axios from 'axios';
@@ -10,9 +10,10 @@ import PageIndicator from "./PageIndicator";
 
 export default function Location() {
 
-    const { SetAddProperty, AddProperty, Loader, SetLoader } = useContext(PropertyContext);
+   
+    const { SetAddProperty, AddProperty} = useContext(PropertyContext);
     const navigate = useNavigate();
-
+    console.log(AddProperty.propertyimage);
     // Adding property dynamically
     const addValue = (property, value) => {
         SetAddProperty({
@@ -21,6 +22,7 @@ export default function Location() {
         });
     };
 
+    
 
     const handleClick = (event) => {
         const elementId = event.target.id;
@@ -30,28 +32,33 @@ export default function Location() {
 
     const handleSubmit = async (event) => {
         const token = localStorage.getItem("token");
-        console.log("token")
+        console.log(token)
         const data = AddProperty
         try {
 
-            const response = await axios.post("http://localhost:8080/prop/v1/addproperty", data,{
+             let res =  await axios.post("http://localhost:8080/prop/v1/addproperty", data,{
                 headers:{
-                    "Authorization": token
+                    "Authorization": token,
+                    'Content-Type': 'multipart/form-data'
                 }
-            });
+            })
+                if (res.status == 200) {
 
-            if (response.status == 200) {
+                    alert("Data Saved sucessFully");
+                    navigate('/home')
+                // callback(navigate('/home',5000))
+                } else {
+                   alert("first one")
+                    alert("unable to save data make sure all required data filled");
+                
 
-                alert("Data Saved sucessFully");
-
-            } else {
-
-                alert("unable to save data make sure all required data filled");
             }
+
+           
         }
         catch (error) {
-
-            alert("Unable to save Please ensure All data Are Filled")
+  alert("second one")
+            alert(error);
         }
 
     }

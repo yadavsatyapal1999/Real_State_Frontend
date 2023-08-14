@@ -51,9 +51,9 @@ export default function General_info() {
                 <br />
                 <select id="featured" onChange={handleClick}  >
                     <option disabled selected >Please Select</option>
-                    <option>?</option>
-                    <option>?</option>
-                    <option>?</option>
+                    <option>Available</option>
+                    <option>Not Available</option>
+                    
                 </select>
                 <br />
                 {/* This function to be handled by multer no addin 
@@ -74,16 +74,16 @@ export default function General_info() {
                 <br />
                 <select id="saletype" onChange={handleClick} >
                     <option disabled selected >Please Select</option>
-                    <option>?</option>
-                    <option>?</option>
+                    <option>Offer</option>
+                    <option>General</option>
                 </select>
                 <br />
                 <label htmlFor="ppdpackage">PPD Package</label>
                 <br />
                 <select id="ppdpackage" onChange={handleClick} >
                     <option disabled selected>Please Select</option>
-                    <option>?</option>
-                    <option>?</option>
+                    <option>Available</option>
+                    <option>Not Available</option>
                 </select>
             </div>
         </div>

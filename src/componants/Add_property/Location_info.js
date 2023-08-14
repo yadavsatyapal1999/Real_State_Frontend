@@ -29,11 +29,16 @@ export default function Location() {
     };
 
     const handleSubmit = async (event) => {
-
+        const token = localStorage.getItem("token");
+        console.log("token")
         const data = AddProperty
         try {
 
-            const response = await axios.post("http://localhost:8080/prop/v1/addproperty", data);
+            const response = await axios.post("http://localhost:8080/prop/v1/addproperty", data,{
+                headers:{
+                    "Authorization": token
+                }
+            });
 
             if (response.status == 200) {
 
@@ -55,7 +60,7 @@ export default function Location() {
         <PageIndicator />
 
         <form className="outer_form" onSubmit={(event) => {
-
+event.preventDefault();
             handleSubmit(event);
 
         }} >
@@ -97,8 +102,8 @@ export default function Location() {
                     <br />
                     <select id="pincode" onChange={handleClick} required  >
                         <option disabled selected >Select Pincode</option>
-                        <option>?</option>
-                        <option>?</option>
+                        <option>50032</option>
+                        <option>785620</option>
                     </select>
                     <br />
                     <label htmlFor="landmark">Landmark</label>

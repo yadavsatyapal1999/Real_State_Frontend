@@ -88,7 +88,7 @@ const LogIn = () => {
             className="btn custom-btn"
             id="form-submit"
           >
-            Loing
+            LOGIN
           </button>
           <span className="linkform">
             <span style={{ color: "gray" }}>Don't have an account? </span>

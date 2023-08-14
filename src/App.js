@@ -11,8 +11,12 @@ import BasicDetail from './componants/Add_property/BasicDetail';
 import PropertyDetail from './componants/Add_property/PropertyDetail';
 import General_info from './componants/Add_property/General_info';
 import Location from './componants/Add_property/Location_info';
+
 import SignUp from './DesktopPages/Signup';
 import './componants/Add_property/Addproperty.css'
+import Editproperty from './DesktopPages/Editproperty';
+import ImageView from './componants/propertyListing/ImageView';
+
 
 function App() {
 
@@ -25,7 +29,8 @@ function App() {
           <Route path='/' element={<LogIn />} />
           <Route path='/home' element={<Home />} />
           <Route path='/propertyView' element={<PropertyView />} />
-          {/* <Route path='/editproperty' element={<Editproperty/>}/> */}
+          <Route path='/editproperty' element={<Editproperty/>}/>
+          <Route path='/image' element={<ImageView/>}/>
           <Route exact path="/addproperty/basic_detail" element={<BasicDetail />} />
           <Route exact path="/addproperty/property_detail" element={<PropertyDetail />} />
           <Route exact path="/addproperty/general_info" element={<General_info />} />

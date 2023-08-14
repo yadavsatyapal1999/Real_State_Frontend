@@ -4,6 +4,7 @@ import "../styles/nav.css"
 
 const Nav = () => {
   const name = localStorage.getItem("name").toUpperCase();
+  const userId = localStorage.getItem("userID");
   return (
     <>
       <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: 'center', fontWeight: "400px", fontSize: "20px", color: "#bcbcbc", padding: "0 2.8rem", marginTop: "20px" }}>
@@ -12,7 +13,7 @@ const Nav = () => {
           <p style={{ color: "#bcbcbc" }}
             className='mb-sm-auto mb-0 details '
             id='menu'>
-            USER ID: {1}
+            USER ID: {userId}
           </p>
           </a>
         <div className='nav-item'>
@@ -22,34 +23,16 @@ const Nav = () => {
           >
             <i className='fs-4 bi-house' >
               <div className='dropdown'>
-                <button
-                style={{background:"#6AB4F8"}}
-                  type="button"
-                  className="btn btn-info dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  <FaUserAlt />
-                  <span
-                    className="ms-1 d-none d-sm-inline"
-                    style={{ marginTop: "5px", background:"#6AB4F8" }}
-                  >{name}</span>
-
-                </button>
-                <div
-                  className="dropdown-menu"
-                  style={{
-                    backgroundColor: "#6AB4F8",
-                  }}
-                >
-                  
-                  <a
-                    className="dropdown-item"
-                    onClick={() => localStorage.clear()}
-                    href="/"
-                  >
-                    Logout
-                  </a>
-                </div>
+                
+                
+                <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <FaUserAlt />{name}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" onClick={() => localStorage.clear()} href="/" style={{fontWeight:"500px",backgroundColor:"grey",color:"wheat"}}>Logout</a></li>
+  </ul>
+</div>
               </div>
             </i>
 

@@ -16,7 +16,7 @@ const PropertyList = () => {
     const [change, setChange] = useState(true);
 
     function showImage(data) {
-        setPath(data.image);
+        setPath(`http://localhost:8080/${data.image}`);
         setPathFlag(true);
         // console.log(path);
     }
@@ -39,7 +39,7 @@ const PropertyList = () => {
                 } else {
                     res.json().then((result) => {
                         console.log(result.data);
-                       
+                        
                         setData(result.data);
                     });
                 }
@@ -97,14 +97,14 @@ const PropertyList = () => {
                                 return (
                                     <tr key={properties.ppdid}>
                                         <th scope='row'>{properties.ppdid}</th>
-                                        <th scope='col' onClick={() => showImage(properties.image)}>
+                                        <th scope='col' onClick={()=>showImage(properties)}>
                                             <BsImageFill />
                                         </th>
                                         <th scope="col">{properties.property_type}</th>
                                         <th scope="col">{properties.mobile}</th>
                                         <th scope="col">{properties.area}</th>
                                         <th scope="col">{properties.views}</th>
-                                        <th onClick={() => update(properties)} scope='col'>
+                                        <th onClick={() => setPath(`http://localhost:8080/${properties.image}`)} scope='col'>
                                             <button style={{ backgroundColor: "#F5FAF5", color: "#416899", borderRadius: "5px", border: "1px solid rgb(228 233 233)" }} className="soldbtn">{properties.status}</button>
                                         </th>
                                         <th style={{}} scope='col'>{properties.daysleft}</th>

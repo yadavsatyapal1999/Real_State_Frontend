@@ -1,12 +1,12 @@
 import React, { useEffect,useState } from 'react';
-import Nav from '../components/Nav';
-import SideBar from '../components/Sidebar';
 // import "../components/addproperty/addProperty.css";
-import BasicInfo from '../components/addproperty/BasicInfo';
-import General from '../components/addproperty/General';
-import Location from '../components/addproperty/Location';
-import PropertyDetail from '../components/addproperty/PropertyDetail';
 import { useLocation } from 'react-router-dom';
+import BasicInfo from '../componants/update/BasicInfo';
+import General from '../componants/update/General';
+import Location from '../componants/update/Location';
+import PropertyDetail from '../componants/update/PropertyDetail';
+import Nav from '../componants/Nav';
+import SideBar from '../componants/Sidebar';
 
 const Editproperty = () => {
   const location = useLocation();
@@ -14,10 +14,10 @@ const Editproperty = () => {
   const normal = "";
  
   const [page, setPage] = useState(1);
-  useEffect(() => console.log(details));
+  // useEffect(() => console.log(details));
   const details = location.state;
   
-  console.log(details);
+  console.log("details" + details);
   const [values, setValues] = useState({
     property: details.property,
     length: details.length,
@@ -29,7 +29,7 @@ const Editproperty = () => {
     ownership: details.ownership,
     propertyAge: details.propertyAge,
     propApproved: details.propApproved,
-    propDescription: details.propDescription,
+    prop_description: details.prop_description,
     bankLoan: details.bankLoan,
     areaUnit: details.areaUnit,
     bhk: details.bhk,

@@ -1,11 +1,12 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Button from "./Button";
 import { PropertyContext } from "./ContextProvider";
 import PageIndicator from "./PageIndicator";
 
 export default function General_info() {
 
+    const [file,SetFile] = useState(null);
     const { General_info, SetGeneral_info,SetAddProperty,BasicDetail, PropertyDetail } = useContext(PropertyContext);
     // Adding property dynamically
     const addValue = (property, value) => {
@@ -23,6 +24,7 @@ export default function General_info() {
 
     const mergeProperty = ()=>{
   SetAddProperty({
+    propertyimage:file,
     ...BasicDetail,
     ...PropertyDetail,
     ...General_info
@@ -58,8 +60,10 @@ export default function General_info() {
                 <br />
                 {/* This function to be handled by multer no addin 
                 now will do it later*/}
-                <input type="file" id="image" />
-                <label htmlFor="image" >Add Photo</label>
+                <input type="file" id="image" name="propertyimage" onChange={(e)=>{
+                    SetFile(e.target.files[0]);
+                }} />
+                <label htmlFor="image"  >Add Photo</label>
                 <br />
             </div>
             <div className="form_second" >

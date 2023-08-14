@@ -45,7 +45,7 @@ export default function PropertyDetail() {
             <div className="form">
 
                 <div className="form_first">
-                    <label htmlFor="length">Length(feet)</label>
+                    <label htmlFor="length">Length</label>
                     <br />
                     <input type=" number" id="length" placeholder="Example 1000" onChange={(e) => {
                         handleClick(e);
@@ -106,7 +106,7 @@ export default function PropertyDetail() {
                     <br />
                 </div>
                 <div className="form_second">
-                    <label htmlFor="breath">Breath(in feet)</label>
+                    <label htmlFor="breath">Breath</label>
                     <br />
                     <input type="number" id="breath" placeholder="Example 700" onChange={(e) => {
                         handleClick(e);

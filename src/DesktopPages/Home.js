@@ -163,6 +163,7 @@ const HomePage = () => {
                       cursor: "pointer",
                       borderTopRightRadius: "25px",
                       borderBottomRightRadius: "25px",
+                      padding: "10px"
                     }}
                     className="input-group-text"
                     id="basic-addon2"

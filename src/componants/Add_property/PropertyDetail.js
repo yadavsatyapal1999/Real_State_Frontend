@@ -7,6 +7,10 @@ import Button from "./Button"
 import { PropertyContext } from "./ContextProvider"
 import PageIndicator from "./PageIndicator";
 import { OnClickPropertyDetail } from "./OnClickLogic";
+import Sidebar from "../Sidebar";
+import Nav from "../Nav"
+
+
 
 export default function PropertyDetail() {
    
@@ -17,6 +21,13 @@ export default function PropertyDetail() {
    
 
     return <div className="router">
+
+<div className="Sidebar"> <Sidebar/>
+    
+    </div>
+    <div className="second_wrapper">
+    <div className="Nav"><Nav/></div>
+    <div>
         <PageIndicator />
         <form className="outer_form">
             <div className="form">
@@ -169,7 +180,11 @@ export default function PropertyDetail() {
                 backWardPath={"/addproperty/basic_detail"}
                 forWardPath={"/addproperty/general_info"}
                 children1={"Previous"}
-                children2={"Save & Next"} />
+                children2={"Save & Next"}
+                nextpage={"General"}
+                prevPage={"Basic"} />
         </form>
+        </div>
+        </div>
     </div>
 }

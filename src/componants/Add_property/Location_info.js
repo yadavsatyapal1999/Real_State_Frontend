@@ -8,6 +8,10 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import PageIndicator from "./PageIndicator";
 import { OnClickLocation_info } from "./OnClickLogic";
+import Sidebar from "../Sidebar";
+import Nav from "../Nav"
+
+
 
 
 export default function Location() {
@@ -53,6 +57,13 @@ export default function Location() {
     }
 
     return <div className="router">
+
+<div className="Sidebar"> <Sidebar/>
+    
+    </div>
+    <div className="second_wrapper">
+    <div className="Nav"><Nav/></div>
+    <div>
         <PageIndicator />
 
         <form className="outer_form" onSubmit={(event) => {
@@ -146,8 +157,12 @@ export default function Location() {
                 forWardPath={"/addproperty"}
                 children1={"Previous"}
                 children2={"Add Property"}
+                nextpage={"Basic"}
+                prevPage={"General"}
             />
 
         </form>
+        </div>
+        </div>
     </div>
 } 

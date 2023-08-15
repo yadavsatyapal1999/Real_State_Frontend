@@ -4,6 +4,10 @@ import Button from "./Button";
 import { PropertyContext } from "./ContextProvider";
 import PageIndicator from "./PageIndicator";
 import { OnClickGeneral_info } from "./OnClickLogic";
+import Sidebar from "../Sidebar";
+import Nav from "../Nav"
+
+
 
 export default function General_info() {
 
@@ -20,6 +24,13 @@ export default function General_info() {
         })
     }
     return <div className="router">
+<div className="Sidebar"> <Sidebar/>
+    
+    </div>
+    <div className="second_wrapper">
+    <div className="Nav"><Nav/></div>
+    <div>
+
         <PageIndicator />
         <form className="outer_form" >
             <div className="form">
@@ -105,7 +116,11 @@ export default function General_info() {
                 forWardPath={"/addproperty/location_info"}
                 children1={"Previous"}
                 children2={"Save & Next"}
-                forward_action={mergeProperty} />
+                forward_action={mergeProperty}
+                nextpage={"Location"}
+                prevPage={"Add"} />
         </form>
+        </div>
+        </div>
     </div>
 }

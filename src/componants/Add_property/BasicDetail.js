@@ -15,11 +15,14 @@ export default function BasicDetail() {
 
     console.log(BasicDetail);
     return <div className="router">
-   <div className="nav"> <Sidebar/>
+   <div className="Sidebar"> <Sidebar/>
     
     </div>
-    <div><Nav/></div>
+    <div className="second_wrapper">
+    <div className="Nav"><Nav/></div>
+    <div>
         <PageIndicator />
+        
         <form action="#" className="outer_form" >
             <div className="form">
 
@@ -112,7 +115,13 @@ export default function BasicDetail() {
                 backWardPath={"/home"}
                 forWardPath={"/addproperty/property_detail"}
                 children1={"Cancel"}
-                children2={"Save & Next"} />
+                children2={"Save & Next"} 
+                nextpage={"Add"}
+                prevPage={"Basic"}
+                />
+                
         </form>
+        </div>
+    </div>
     </div>
 }

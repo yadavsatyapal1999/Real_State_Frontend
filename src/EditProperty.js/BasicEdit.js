@@ -1,20 +1,14 @@
-// This page takes basic detail of property in a form
-
-import { useContext } from "react";
-import Button from "./Button";
-import { PropertyContext } from "./ContextProvider";
-import PageIndicator from "./PageIndicator";
-import { OnClickBasicDetail } from "./OnClickLogic";
-
-export default function BasicDetail() {
-
-    
-    const { BasicDetail, SetBasicDetail}=useContext(PropertyContext)
 
 
-    console.log(BasicDetail);
+export default function BasicEdit({ SetPage, newData, SetnewData }) {
+
+
+
+
+
+
     return <div className="router">
-        <PageIndicator />
+
         <form action="#" className="outer_form" >
             <div className="form">
 
@@ -23,10 +17,13 @@ export default function BasicDetail() {
                     <br />
                     <select id="property_type"
                         onChange={(e) => {
-                            OnClickBasicDetail(e, "property_type",BasicDetail, SetBasicDetail)
+                            SetnewData({
+                                ...newData,
+                                property_type: e.target.value
+                            })
                         }}
                         required
-                        value={BasicDetail.property_type}
+                        value={newData.property_type}
                     >
                         <option value="" disabled >Select Property Type</option>
                         <option value="Home">Home</option>
@@ -37,14 +34,20 @@ export default function BasicDetail() {
                     <label htmlFor="price">Price</label>
                     <br />
                     <input type="number" id="price" onChange={(e) => {
-                        OnClickBasicDetail(e, "price",BasicDetail, SetBasicDetail)
-                    }} required value={BasicDetail.price} />
+                        SetnewData({
+                            ...newData,
+                            price: e.target.value
+                        })
+                    }} required value={newData.price} />
                     <br />
                     <label htmlFor="property_age">Property Age</label>
                     <br />
                     <select id="property_age" onChange={(e) => {
-                        OnClickBasicDetail(e, "property_age",BasicDetail, SetBasicDetail)
-                    }} required value={BasicDetail.property_age} >
+                        SetnewData({
+                            ...newData,
+                            property_age: e.target.value
+                        })
+                    }} required value={newData.property_age} >
                         <option value="" disabled >Select Property Age</option>
                         <option>20</option>
                         <option>35</option>
@@ -56,8 +59,11 @@ export default function BasicDetail() {
                     <label htmlFor="property_description">Property Description</label>
                     <br />
                     <input type="text" id="property_description" onChange={(e) => {
-                        OnClickBasicDetail(e, "property_description",BasicDetail, SetBasicDetail)
-                    }} value={BasicDetail.property_description} />
+                        SetnewData({
+                            ...newData,
+                            property_description: e.target.value
+                        })
+                    }} value={newData.property_description} />
                     <br />
 
                 </div>
@@ -65,8 +71,11 @@ export default function BasicDetail() {
                     <label htmlFor="negotiable">Negotiable</label>
                     <br />
                     <select id="negotiable" onChange={(e) => {
-                        OnClickBasicDetail(e, "negotiable",BasicDetail, SetBasicDetail)
-                    }} value={BasicDetail.negotiable} >
+                        SetnewData({
+                            ...newData,
+                            negotiable: e.target.value
+                        })
+                    }} value={newData.negotiable} >
                         <option value="" disabled>Negotiable</option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -75,8 +84,11 @@ export default function BasicDetail() {
                     <label htmlFor="ownerShip">Ownership</label>
                     <br />
                     <select id="ownerShip" onChange={(e) => {
-                        OnClickBasicDetail(e, "ownerShip",BasicDetail, SetBasicDetail)
-                    }} required value={BasicDetail.ownerShip} >
+                        SetnewData({
+                            ...newData,
+                            ownerShip: e.target.value
+                        })
+                    }} required value={newData.ownerShip} >
                         <option value="" disabled >Select Ownership</option>
                         <option>Indvidual</option>
                         <option>Joint</option>
@@ -85,8 +97,11 @@ export default function BasicDetail() {
                     <label htmlFor="property_approved">Property Approved</label>
                     <br />
                     <select id="property_approved" onChange={(e) => {
-                        OnClickBasicDetail(e, "property_approved",BasicDetail, SetBasicDetail)
-                    }} value={BasicDetail.property_approved} >
+                        SetnewData({
+                            ...newData,
+                            property_approved: e.target.value
+                        })
+                    }} value={newData.property_approved} >
                         <option value="" disabled>Property Approved</option>
                         <option>Yes</option>
                         <option>No</option>
@@ -95,19 +110,21 @@ export default function BasicDetail() {
                     <label htmlFor="bank_loan">Bank Loan</label>
                     <br />
                     <select id="bank_loan" onChange={(e) => {
-                        OnClickBasicDetail(e, "bank_loan",BasicDetail, SetBasicDetail)
-                    }} required value={BasicDetail.bank_loan}  >
+                        SetnewData({
+                            ...newData,
+                            bank_loan: e.target.value
+                        })
+                    }} required value={newData.bank_loan}  >
                         <option value="" disabled>Select Bank Loan</option>
                         <option>Available</option>
                         <option>Not Available</option>
                     </select>
                 </div>
             </div>
-            <Button
-                backWardPath={"/home"}
-                forWardPath={"/addproperty/property_detail"}
-                children1={"Cancel"}
-                children2={"Save & Next"} />
+            <button className="btn1">Cancel</button>
+            <button className="btn2"onClick={()=>{
+                SetPage(2);
+            }} >Save & Next</button>
         </form>
     </div>
 }

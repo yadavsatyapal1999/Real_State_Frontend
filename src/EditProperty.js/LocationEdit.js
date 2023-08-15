@@ -1,55 +1,41 @@
 
-// This is location information page of Add property
-
-import { useContext } from "react";
-import Button from "./Button"
-import { PropertyContext } from "./ContextProvider";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import PageIndicator from "./PageIndicator";
-import { OnClickLocation_info } from "./OnClickLogic";
 
 
-export default function Location() {
+
+export default function LocationEdit({ SetPage, newData, SetnewData }) {
 
 
-    const { Location_info, SetLocation_info, AddProperty, SetAddProperty } = useContext(PropertyContext);
-    const navigate = useNavigate();
-    console.log(AddProperty.propertyimage);
 
+    const handleSubmit = async () => {
 
-    const handleSubmit = async (event) => {
-        const token = localStorage.getItem("token");
-        console.log(token)
-        const data = AddProperty
         try {
-
-            let res = await axios.post("http://localhost:8080/prop/v1/addproperty", data, {
+            const resp = await axios.put("http://localhost:8080/prop/v1/addproperty", newData, {
                 headers: {
-                    "Authorization": token,
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            if (res.status == 200) {
-
-                alert("Data Saved sucessFully");
-                navigate('/home')
-            } else {
-                alert("unable to save data make sure all required data filled");
+            if (resp.status == 200) {
+                alert("Data edited Sucessfully")
+                // navigation path to be given
+            }
+            else {
+                alert("unable to save data")
             }
         }
-        catch (error) {
-            alert("Err in saving data All feild must be filled")
+        catch (err) {
+            alert("Internal server error");
+            console.log(err)
         }
 
     }
 
+
     return <div className="router">
-        <PageIndicator />
 
         <form className="outer_form" onSubmit={(event) => {
             event.preventDefault();
-            handleSubmit(event);
+            handleSubmit();
 
         }} >
             <div className="form">
@@ -59,17 +45,23 @@ export default function Location() {
                     <br />
                     <input type="email" id="email" placeholder="Email"
                         onChange={(e) => {
-                            OnClickLocation_info(e, "email", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                            SetnewData({
+                                ...newData,
+                                email: e.target.value
+                            })
                         }}
                         required
-                        value={Location_info.email} />
+                        value={newData.email} />
                     <br />
                     <label htmlFor="addressarea">Area</label>
                     <br />
                     <select id="addressarea" onChange={(e) => {
-                        OnClickLocation_info(e, "addressarea", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                        SetnewData({
+                            ...newData,
+                            addressarea: e.target.value
+                        })
                     }}
-                        value={Location_info.addressarea}  >
+                        value={newData.addressarea}  >
                         <option value="" disabled >Select Area</option>
                         <option>Urban</option>
                         <option>rural</option>
@@ -79,26 +71,35 @@ export default function Location() {
                     <br />
                     <input type="text" id="address" placeholder="Address"
                         onChange={(e) => {
-                            OnClickLocation_info(e, "address", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                            SetnewData({
+                                ...newData,
+                                address: e.target.value
+                            })
                         }}
                         required
-                        value={Location_info.address} />
+                        value={newData.address} />
                     <br />
                     <label htmlFor="latitude">Latitude</label>
                     <br />
                     <input type="text" id="latitude" placeholder="Latitude" onChange={(e) => {
-                        OnClickLocation_info(e, "latitude", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                        SetnewData({
+                            ...newData,
+                            latitude: e.target.value
+                        })
                     }}
-                        value={Location_info.latitude} />
+                        value={newData.latitude} />
                     <br />
                 </div>
                 <div className="form_second">
                     <label htmlFor="city">City</label>
                     <br />
                     <select id="city" onChange={(e) => {
-                        OnClickLocation_info(e, "city", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                        SetnewData({
+                            ...newData,
+                            city: e.target.value
+                        })
                     }} required
-                        value={Location_info.city} >
+                        value={newData.city} >
                         <option value="" disabled>Select City</option>
                         <option>Gurgaon</option>
                         <option>Delhi</option>
@@ -108,9 +109,12 @@ export default function Location() {
                     <label htmlFor="pincode">Pincode</label>
                     <br />
                     <select id="pincode" onChange={(e) => {
-                        OnClickLocation_info(e, "pincode", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                        SetnewData({
+                            ...newData,
+                            pincode: e.target.value
+                        })
                     }} required
-                        value={Location_info.pincode} >
+                        value={newData.pincode} >
                         <option value="" disabled >Select Pincode</option>
                         <option>50032</option>
                         <option>785620</option>
@@ -120,26 +124,30 @@ export default function Location() {
                     <br />
                     <input type="text" id="landmark"
                         placeholder="Landmark" onChange={(e) => {
-                            OnClickLocation_info(e, "landmark", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                            SetnewData({
+                                ...newData,
+                                landmark: e.target.value
+                            })
                         }}
-                        value={Location_info.landmark} />
+                        value={newData.landmark} />
                     <br />
                     <label htmlFor="longitude">Longitude</label>
                     <br />
                     <input type="text" id="longitude" placeholder="Longitude" onChange={(e) => {
-                        OnClickLocation_info(e, "longitude", Location_info, SetLocation_info, AddProperty, SetAddProperty)
+                        SetnewData({
+                            ...newData,
+                            longitude: e.target.value
+                        })
                     }}
-                        value={Location_info.longitude} />
+                        value={newData.longitude} />
                     <br />
                 </div>
             </div>
-            <Button
-                backWardPath={"/addproperty/general_info"}
-                forWardPath={"/addproperty"}
-                children1={"Previous"}
-                children2={"Add Property"}
-            />
 
+            <button className="btn1" onClick={() => {
+                SetPage(3)
+            }}>Previous</button>
+            <button className="btn2" type="submit">Add Property</button>
         </form>
     </div>
-} 
+}

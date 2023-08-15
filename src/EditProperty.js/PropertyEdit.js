@@ -1,23 +1,17 @@
 
 
-// This is property detail page of add property
 
-import { useContext, useEffect, useState } from "react"
-import Button from "./Button"
-import { PropertyContext } from "./ContextProvider"
-import PageIndicator from "./PageIndicator";
-import { OnClickPropertyDetail } from "./OnClickLogic";
 
-export default function PropertyDetail() {
-   
-    const {PropertyDetail, SetPropertyDetail } = useContext(PropertyContext);
 
-   
-    console.log(PropertyDetail)
-   
+
+export default function PropertyEdit({ SetPage, newData, SetnewData }) {
+
+
+
+
 
     return <div className="router">
-        <PageIndicator />
+
         <form className="outer_form">
             <div className="form">
 
@@ -25,26 +19,35 @@ export default function PropertyDetail() {
                     <label htmlFor="length">Length</label>
                     <br />
                     <input type=" number" id="length" placeholder="Example 1000" onChange={(e) => {
-                        OnClickPropertyDetail(e, "length",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            length: e.target.value
+                        })
                     }}
                         required
-                        value={PropertyDetail.length}
+                        value={newData.length}
                     />
                     <br />
                     <label htmlFor="area">Area</label>
                     <br />
                     <input type="number" id="area" onChange={(e) => {
-                        OnClickPropertyDetail(e, "area",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            area: e.target.value
+                        })
                     }}
-                        value={PropertyDetail.area}
+                        value={newData.area}
                         required />
                     <br />
                     <label htmlFor="bhk">No. of BHK</label>
                     <br />
                     <select id="bhk" onChange={(e) => {
-                        OnClickPropertyDetail(e, "bhk",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            bhk: e.target.value
+                        })
                     }} required
-                        value={PropertyDetail.bhk} >
+                        value={newData.bhk} >
                         <option value="" disabled>Select No. of BHK</option>
                         <option>1</option>
                         <option>2</option>
@@ -57,8 +60,11 @@ export default function PropertyDetail() {
                     <br />
 
                     <select id="attached" onChange={(e) => {
-                        OnClickPropertyDetail(e, "attached",PropertyDetail, SetPropertyDetail);
-                    }} value={PropertyDetail.attached} >
+                        SetnewData({
+                            ...newData,
+                            attached: e.target.value
+                        })
+                    }} value={newData.attached} >
                         <option value="" disabled >Attached</option>
                         <option>Yes</option>
                         <option>No</option>
@@ -67,9 +73,12 @@ export default function PropertyDetail() {
                     <label htmlFor="furnished">Furnished</label>
                     <br />
                     <select id="furnished" onChange={(e) => {
-                        OnClickPropertyDetail(e, "furnished",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            furnished: e.target.value
+                        })
                     }} required
-                        value={PropertyDetail.furnished} >
+                        value={newData.furnished} >
                         <option value="" disabled >Select furnish</option>
                         <option>Fully Furnished</option>
                         <option>Partially Furnished</option>
@@ -79,9 +88,12 @@ export default function PropertyDetail() {
                     <label htmlFor="lift">Lift</label>
                     <br />
                     <select id="lift" onChange={(e) => {
-                        OnClickPropertyDetail(e, "lift",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            lift: e.target.value
+                        })
                     }}
-                        value={PropertyDetail.lift}>
+                        value={newData.lift}>
                         <option value="" disabled>Select Lift</option>
                         <option>Available</option>
                         <option>Not Available</option>
@@ -90,9 +102,12 @@ export default function PropertyDetail() {
                     <label htmlFor="facing">Facing</label>
                     <br />
                     <select id="facing" onChange={(e) => {
-                        OnClickPropertyDetail(e, "facing",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            facing: e.target.value
+                        })
                     }} required
-                        value={PropertyDetail.facing} >
+                        value={newData.facing} >
                         <option value="" disabled >Select Facing</option>
                         <option>East</option>
                         <option>West</option>
@@ -105,17 +120,23 @@ export default function PropertyDetail() {
                     <label htmlFor="breath">Breath</label>
                     <br />
                     <input type="number" id="breath" placeholder="Example 700" onChange={(e) => {
-                        OnClickPropertyDetail(e, "breath",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            breath: e.target.value
+                        })
                     }}
                         required
-                        value={PropertyDetail.breath} />
+                        value={newData.breath} />
                     <br />
                     <label htmlFor="area_unit">Area Unit</label>
                     <br />
                     <select id="area_unit" onChange={(e) => {
-                        OnClickPropertyDetail(e, "area_unit",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            area_unit: e.target.value
+                        })
                     }} required
-                        value={PropertyDetail.area_unit} >
+                        value={newData.area_unit} >
                         <option value="" disabled>Area Unit</option>
                         <option>Sq. Feet</option>
                         <option>Sq. Inch</option>
@@ -125,7 +146,10 @@ export default function PropertyDetail() {
                     <label htmlFor="floor" >No. of floor</label>
                     <br />
                     <select id="floor" onChange={(e) => {
-                        OnClickPropertyDetail(e, "floor",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            floor: e.target.value
+                        })
                     }} value={PropertyDetail.floor} >
                         <option value="" disabled >Select No. of Floor</option>
                         <option>1</option>
@@ -138,7 +162,10 @@ export default function PropertyDetail() {
                     <label htmlFor="western">Western Toilet</label>
                     <br />
                     <select id="western" onChange={(e) => {
-                        OnClickPropertyDetail(e, "western",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            western: e.target.value
+                        })
                     }}
                         value={PropertyDetail.western} >
                         <option value="" disabled>Select Western Toilet</option>
@@ -149,7 +176,10 @@ export default function PropertyDetail() {
                     <label htmlFor="parking">Car Parking</label>
                     <br />
                     <select id="parking" onChange={(e) => {
-                        OnClickPropertyDetail(e, "parking",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            parking: e.target.value
+                        })
                     }}
                         value={PropertyDetail.parking} >
                         <option value="" disabled >Select Car Parking</option>
@@ -160,16 +190,23 @@ export default function PropertyDetail() {
                     <label htmlFor="electricity">Electricity</label>
                     <br />
                     <input type="text" id="electricity" placeholder="Example 3 phase" onChange={(e) => {
-                        OnClickPropertyDetail(e, "electricity",PropertyDetail, SetPropertyDetail);
+                        SetnewData({
+                            ...newData,
+                            electricity: e.target.value
+                        });
                     }}
                         value={PropertyDetail.electricity} />
                 </div>
             </div>
-            <Button
-                backWardPath={"/addproperty/basic_detail"}
-                forWardPath={"/addproperty/general_info"}
-                children1={"Previous"}
-                children2={"Save & Next"} />
+            <button className="btn1" onClick={()=>{
+                SetPage(1)
+            }}>Previous</button>
+            <button className="btn2" onClick={()=>{
+                SetPage(3)
+            }}>Save & Next</button>
         </form>
     </div>
+
+
+
 }

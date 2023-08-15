@@ -118,7 +118,7 @@ const PropertyList = () => {
                                             }}
                                         >
                                             <span
-                                                onClick={() => {
+                                                onClick={() => { 
                                                     navigate("/propertyView", {state: properties});
                                                 }}
                                             >
@@ -126,6 +126,10 @@ const PropertyList = () => {
                                             </span>
                                             <span
                                                 onClick={() => {
+                                                    // Edit Property
+                                                    localStorage.setItem("ppd_id",properties.ppdid);
+                                                    localStorage.setItem("PropertyData",properties.data);
+                                                    console.log(properties);
                                                     navigate("/editproperty" , { state: properties});
                                                 }}
                                             >

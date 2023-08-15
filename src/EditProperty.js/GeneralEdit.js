@@ -1,26 +1,17 @@
+import { useState } from "react"
 
-import { useContext, useState } from "react";
-import Button from "./Button";
-import { PropertyContext } from "./ContextProvider";
-import PageIndicator from "./PageIndicator";
-import { OnClickGeneral_info } from "./OnClickLogic";
 
-export default function General_info() {
 
-    const [file, SetFile] = useState(null);
-    const { General_info, SetGeneral_info, SetAddProperty, BasicDetail, PropertyDetail } = useContext(PropertyContext);
-    
 
-    const mergeProperty = () => {
-        SetAddProperty({
-            propertyimage: file,
-            ...BasicDetail,
-            ...PropertyDetail,
-            ...General_info
-        })
-    }
+
+export default function GeneralEdit({ SetPage, newData, SetnewData }) {
+
+
+    const [file, SetFile] = useState();
+
+
     return <div className="router">
-        <PageIndicator />
+
         <form className="outer_form" >
             <div className="form">
 
@@ -28,18 +19,24 @@ export default function General_info() {
                     <label htmlFor="owner_name">Name</label>
                     <br />
                     <input type="text" id="owner_name" placeholder="Owner Name" onChange={(e) => {
-                        OnClickGeneral_info(e, "owner_name",General_info, SetGeneral_info)
+                        SetnewData({
+                            ...newData,
+                            owner_name: e.target.value
+                        })
                     }}
                         required
-                        value={General_info.owner_name}
+                        value={newData.owner_name}
                     />
                     <br />
                     <label htmlFor="postedby">Posted By</label>
                     <br />
                     <select id="postedby" onChange={(e) => {
-                        OnClickGeneral_info(e, "postedby",General_info, SetGeneral_info)
+                        SetnewData({
+                            ...newData,
+                            postedby: e.target.value
+                        })
                     }}
-                        value={General_info.postedby}  >
+                        value={newData.postedby}  >
                         <option value="" disabled >Posted By</option>
                         <option>Owner</option>
                         <option>Sales Agent</option>
@@ -49,9 +46,12 @@ export default function General_info() {
                     <label htmlFor="featured">Featured Package</label>
                     <br />
                     <select id="featured" onChange={(e) => {
-                        OnClickGeneral_info(e, "featured",General_info, SetGeneral_info)
+                        SetnewData({
+                            ...newData,
+                            featured: e.target.value
+                        })
                     }}
-                        value={General_info.featured} >
+                        value={newData.featured} >
                         <option value="" disabled >Please Select</option>
                         <option>Available</option>
                         <option>Not Available</option>
@@ -72,17 +72,23 @@ export default function General_info() {
                     <input type="number" id="mobile"
                         placeholder="Enter Mobile Number"
                         onChange={(e) => {
-                            OnClickGeneral_info(e, "mobile",General_info, SetGeneral_info)
+                            SetnewData({
+                                ...newData,
+                                mobile: e.target.value
+                            })
                         }}
                         required minLength={10} maxLength={10}
-                        value={General_info.mobile} />
+                        value={newData.mobile} />
                     <br />
                     <label htmlFor="saletype">Sale Type</label>
                     <br />
                     <select id="saletype" onChange={(e) => {
-                        OnClickGeneral_info(e, "saletype",General_info, SetGeneral_info)
+                        SetnewData({
+                            ...newData,
+                            saletype: e.target.value
+                        })
                     }}
-                        value={General_info.saletype} >
+                        value={newData.saletype} >
                         <option value="" disabled >Please Select</option>
                         <option>Offer</option>
                         <option>General</option>
@@ -91,21 +97,30 @@ export default function General_info() {
                     <label htmlFor="ppdpackage">PPD Package</label>
                     <br />
                     <select id="ppdpackage" onChange={(e) => {
-                        OnClickGeneral_info(e, "ppdpackage",General_info, SetGeneral_info)
+                        SetnewData({
+                            ...newData,
+                            ppdpackage: e.target.value
+                        })
                     }}
-                        value={General_info.ppdpackage}  >
+                        value={newData.ppdpackage}  >
                         <option value="" disabled>Please Select</option>
                         <option>Available</option>
                         <option>Not Available</option>
                     </select>
                 </div>
             </div>
-            <Button
-                backWardPath={"/addproperty/property_detail"}
-                forWardPath={"/addproperty/location_info"}
-                children1={"Previous"}
-                children2={"Save & Next"}
-                forward_action={mergeProperty} />
+            <button className="btn1" onClick={() => {
+                SetPage(2)
+            }}>Previous</button>
+            <button className="btn2" onClick={() => {
+                SetPage(4);
+                if (file != null || file != undefined) {
+                    SetnewData({
+                        ...newData,
+                        propertyimage: file
+                    })
+                }
+            }} >Save & Next</button>
         </form>
     </div>
 }

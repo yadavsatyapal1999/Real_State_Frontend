@@ -1,23 +1,25 @@
 
 import axios from 'axios';
+import { useContext } from "react"
+import { PropertyContext } from "../componants/Add_property/ContextProvider";
+import { useNavigate } from 'react-router-dom';
 
 
-
-export default function LocationEdit({ SetPage, newData, SetnewData }) {
-
-
-
+export default function LocationEdit({ SetPage}) {
+    const {newData ,SetnewData} = useContext(PropertyContext)
+    const Navigate = useNavigate()
+    const id = newData._id;
     const handleSubmit = async () => {
 
         try {
-            const resp = await axios.put("http://localhost:8080/prop/v1/addproperty", newData, {
+            const resp = await axios.put(`http://localhost:8080/prop/v1/updateproperty/${id}`, newData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
             if (resp.status == 200) {
                 alert("Data edited Sucessfully")
-                // navigation path to be given
+                Navigate("/home")
             }
             else {
                 alert("unable to save data")

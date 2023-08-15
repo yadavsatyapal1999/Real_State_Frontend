@@ -7,14 +7,14 @@ import LocationEdit from "./LocationEdit";
 export default function Edit() {
 
     const [page, SetPage] = useState(1)
-    const [newData,SetnewData] = useState()
-const formdata = localStorage.getItem("PropertyData");
+   //  const [newData,SetnewData] = useState()
+// const formdata = localStorage.getItem("PropertyData");
 
-    useEffect(()=>{
-        SetnewData({
-            ... formdata
-        })
-    },[])
+    // useEffect(()=>{
+    //     SetnewData({
+    //         ... formdata
+    //     })
+    // },[])
 
 
     
@@ -22,15 +22,17 @@ const formdata = localStorage.getItem("PropertyData");
 
     switch (page) {
         case 1:
-            form = <BasicEdit SetPage ={SetPage} newData={newData} SetnewData ={SetnewData} />;
+            form = <BasicEdit SetPage ={SetPage}  />;
             break;
         case 2:
-            form = <PropertyEdit SetPage ={SetPage} newData={newData} SetnewData ={SetnewData}  />;
+            form = <PropertyEdit SetPage ={SetPage}   />;
+            break;
         case 3:
-            form = <GeneralEdit SetPage ={SetPage} newData={newData} SetnewData ={SetnewData} />;
+            form = <GeneralEdit SetPage ={SetPage}  />;
+            break;
         case 4:
-            form = <LocationEdit SetPage ={SetPage}  newData={newData} SetnewData ={SetnewData}/>;
-
+            form = <LocationEdit SetPage ={SetPage}  />;
+            break;
     }
 
 

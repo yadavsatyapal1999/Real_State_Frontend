@@ -1,11 +1,13 @@
+import { useContext } from "react"
+import { PropertyContext } from "../componants/Add_property/ContextProvider";
+import { useNavigate } from "react-router-dom";
+
+export default function BasicEdit({ SetPage }) {
 
 
-export default function BasicEdit({ SetPage, newData, SetnewData }) {
-
-
-
-
-
+    const {newData ,SetnewData} = useContext(PropertyContext)
+    console.log(newData);
+    const Navigate = useNavigate();
 
     return <div className="router">
 
@@ -121,7 +123,7 @@ export default function BasicEdit({ SetPage, newData, SetnewData }) {
                     </select>
                 </div>
             </div>
-            <button className="btn1">Cancel</button>
+            <button className="btn1" onClick={()=>Navigate("/home")}>Cancel</button>
             <button className="btn2"onClick={()=>{
                 SetPage(2);
             }} >Save & Next</button>

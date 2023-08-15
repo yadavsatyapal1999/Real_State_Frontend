@@ -13,9 +13,9 @@ import { OnClickLocation_info } from "./OnClickLogic";
 export default function Location() {
 
 
-    const { Location_info, SetLocation_info, AddProperty, SetAddProperty } = useContext(PropertyContext);
+    const { Location_info, SetLocation_info, AddProperty, SetAddProperty,SetBasicDetail,SetPropertyDetail,SetGeneral_info } = useContext(PropertyContext);
     const navigate = useNavigate();
-    console.log(AddProperty.propertyimage);
+    console.log(AddProperty);
 
 
     const handleSubmit = async (event) => {
@@ -31,10 +31,16 @@ export default function Location() {
                 }
             })
             if (res.status == 200) {
-
+                SetBasicDetail("");
+                SetGeneral_info("");
+                SetLocation_info("");
+                SetAddProperty("");
                 alert("Data Saved sucessFully");
                 navigate('/home')
+                window.location.reload();
+            
             } else {
+
                 alert("unable to save data make sure all required data filled");
             }
         }

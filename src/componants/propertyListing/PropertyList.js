@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BsImageFill } from "react-icons/bs";
 import { BsFillEyeFill } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import ImageView from './ImageView';
+import {  PropertyContext } from '../Add_property/ContextProvider';
 const PropertyList = () => {
     
     let token = localStorage.getItem("token");
@@ -14,7 +15,7 @@ const PropertyList = () => {
     const [path, setPath] = useState("");
     const [data, setData] = useState([]);
     const [change, setChange] = useState(true);
-
+    const {SetnewData} = useContext(PropertyContext);
     function showImage(data) {
         setPath(`http://localhost:8080/${data.image}`);
         setPathFlag(true);
@@ -129,8 +130,11 @@ const PropertyList = () => {
                                                     // Edit Property
                                                     localStorage.setItem("ppd_id",properties.ppdid);
                                                     localStorage.setItem("PropertyData",properties.data);
-                                                    console.log(properties);
+                                                   
                                                     navigate("/editproperty" , { state: properties});
+                                                    // console.log(properties)
+                                                    SetnewData(properties);
+                                                    // console.log()
                                                 }}
                                             >
                                                 <MdModeEditOutline />

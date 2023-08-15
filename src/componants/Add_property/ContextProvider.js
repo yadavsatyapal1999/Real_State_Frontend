@@ -66,7 +66,7 @@ export function ContextFunction({ children }) {
         // It will store all detail od property and this data will be saved into data base
     })
 
-
+    const [newData,SetnewData] = useState()
     return <PropertyContext.Provider
         value={{
             BasicDetail,
@@ -78,7 +78,9 @@ export function ContextFunction({ children }) {
             Location_info,
             SetLocation_info,
             AddProperty,
-            SetAddProperty
+            SetAddProperty,
+            newData,
+            SetnewData
         }}>
         {children}
     </PropertyContext.Provider>

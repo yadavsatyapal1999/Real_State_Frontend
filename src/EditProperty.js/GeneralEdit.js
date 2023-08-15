@@ -1,12 +1,13 @@
 import { useState } from "react"
+import { useContext } from "react"
+import { PropertyContext } from "../componants/Add_property/ContextProvider";
 
 
 
 
+export default function GeneralEdit({ SetPage }) {
 
-export default function GeneralEdit({ SetPage, newData, SetnewData }) {
-
-
+    const {newData ,SetnewData} = useContext(PropertyContext)
     const [file, SetFile] = useState();
 
 

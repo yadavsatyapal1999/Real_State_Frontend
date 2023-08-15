@@ -126,7 +126,7 @@ function PropertyView() {
                     </tr>
                     <tr>
                       <td>Property Approved</td>
-                      <td>{tableDetails.attached}</td>
+                      <td>{tableDetails.property_approved}</td>
                     </tr>
                     <tr>
                       <td>Property Description</td>
@@ -147,7 +147,7 @@ function PropertyView() {
                     </tr>
                     <tr>
                       <td>Breath</td>
-                      <td>{tableDetails.breadth}</td>
+                      <td>{tableDetails.breath}</td>
                     </tr>
                     <tr>
                       <td>Total Area</td>
@@ -212,7 +212,7 @@ function PropertyView() {
                     </tr>
                     <tr>
                       <td>Featured Package</td>
-                      <td>{tableDetails.package}</td>
+                      <td>{tableDetails.featured}</td>
                     </tr>
                     <tr>
                       <td>PPD Package</td>

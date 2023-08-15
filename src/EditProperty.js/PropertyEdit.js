@@ -1,13 +1,14 @@
+import { useContext } from "react"
+import { PropertyContext } from "../componants/Add_property/ContextProvider";
 
 
 
 
 
-
-export default function PropertyEdit({ SetPage, newData, SetnewData }) {
-
+export default function PropertyEdit({ SetPage }) {
 
 
+    const {newData ,SetnewData} = useContext(PropertyContext)
 
 
     return <div className="router">
@@ -150,7 +151,7 @@ export default function PropertyEdit({ SetPage, newData, SetnewData }) {
                             ...newData,
                             floor: e.target.value
                         })
-                    }} value={PropertyDetail.floor} >
+                    }} value={newData.floor} >
                         <option value="" disabled >Select No. of Floor</option>
                         <option>1</option>
                         <option>2</option>
@@ -167,7 +168,7 @@ export default function PropertyEdit({ SetPage, newData, SetnewData }) {
                             western: e.target.value
                         })
                     }}
-                        value={PropertyDetail.western} >
+                        value={newData.western} >
                         <option value="" disabled>Select Western Toilet</option>
                         <option>Avaialbe</option>
                         <option>Not Available</option>
@@ -181,7 +182,7 @@ export default function PropertyEdit({ SetPage, newData, SetnewData }) {
                             parking: e.target.value
                         })
                     }}
-                        value={PropertyDetail.parking} >
+                        value={newData.parking} >
                         <option value="" disabled >Select Car Parking</option>
                         <option>Avaialbe</option>
                         <option>Not Available</option>
@@ -195,7 +196,7 @@ export default function PropertyEdit({ SetPage, newData, SetnewData }) {
                             electricity: e.target.value
                         });
                     }}
-                        value={PropertyDetail.electricity} />
+                        value={newData.electricity} />
                 </div>
             </div>
             <button className="btn1" onClick={()=>{

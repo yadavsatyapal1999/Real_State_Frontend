@@ -5,7 +5,8 @@ import Button from "./Button";
 import { PropertyContext } from "./ContextProvider";
 import PageIndicator from "./PageIndicator";
 import { OnClickBasicDetail } from "./OnClickLogic";
-
+import Sidebar from "../Sidebar";
+import Nav from "../Nav"
 export default function BasicDetail() {
 
     
@@ -14,6 +15,10 @@ export default function BasicDetail() {
 
     console.log(BasicDetail);
     return <div className="router">
+   <div className="nav"> <Sidebar/>
+    
+    </div>
+    <div><Nav/></div>
         <PageIndicator />
         <form action="#" className="outer_form" >
             <div className="form">

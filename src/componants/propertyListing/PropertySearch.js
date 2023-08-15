@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { BsImageFill } from 'react-icons/bs';
+import { BsFillEyeFill, BsImageFill } from 'react-icons/bs';
 import { MdModeEditOutline } from "react-icons/md";
 import ImageView from './ImageView';
+import { useNavigate } from 'react-router-dom';
 
 const PropertySearch = ({ values }) => {
-  // console.log(values._id)
+  // console.log(values)
+  const navigate = useNavigate();
   let token = localStorage.getItem("token");
   let id = localStorage.getItem("userID");
   const [pathFlag, setPathFlag] = useState(false);
@@ -38,7 +40,8 @@ const PropertySearch = ({ values }) => {
           <h1 style={{ marginTop: "40px", marginLeft: "30%" }}>Property ID Not Found</h1>
         </>
       ) : (
-        <>
+        values.map((properties)=>(
+          <>
           <table
             className='table table-hover table-responsive-xl'
             style={{ marginTop: "15px" }}
@@ -57,20 +60,28 @@ const PropertySearch = ({ values }) => {
               </tr>
             </thead>
             <tbody>
-              <tr key={values.ppdId}>
-                <th scope='row'>{values.ppdId}</th>
+              <tr key={properties.ppdid}>
+                <th scope='row'>{properties.ppdid}</th>
                 <th scope='col' onClick={() => setPathFlag(true)}>
                   <BsImageFill />
                 </th>
-                <th scope="col">{values.property}</th>
-                <th scope="col">{values.mobile}</th>
-                <th scope="col">{values.area}</th>
-                <th scope="col">{values.views}</th>
-                <th onClick={() => update(values)} scope='col'>
-                  <button style={{ backgroundColor: "#F5FAF5", color: "#416899", borderRadius: "5px", border: "1px solid rgb(228 233 233)" }} className="soldbtn">{values.status}</button>
+                <th scope="col">{properties.property_type}</th>
+                <th scope="col">{properties.mobile}</th>
+                <th scope="col">{properties.area}</th>
+                <th scope="col">{properties.views}</th>
+                <th onClick={() => update(properties)} scope='col'>
+                  <button style={{ backgroundColor: "#F5FAF5", color: "#416899", borderRadius: "5px", border: "1px solid rgb(228 233 233)" }} className="soldbtn">{properties.status}</button>
                 </th>
-                <th  scope='col'>{values.daysLeft}</th>
-                <th scope="col">
+                <th  scope='col'>{properties.daysleft}</th>
+                <th  scope='col' onClick={() => {
+                                                    navigate("/propertyView", {state: properties});
+                                                }}>
+                  <BsFillEyeFill/>
+                </th>
+
+                <th scope="col" onClick={() => {
+                                                    navigate("/editproperty", {state: properties});
+                                                }}>
                   <MdModeEditOutline />
                 </th>
               </tr>
@@ -92,10 +103,11 @@ const PropertySearch = ({ values }) => {
                 onClick={() => setPathFlag(false)}
               >
 
-                <ImageView path={values.imageUrl} />
+                <ImageView path={`http://localhost:8080/${properties.image}`} />
               </div>
             )}
         </>
+        ))
       )}
     </>
   );

@@ -17,13 +17,13 @@ const PropertyList = () => {
     const [change, setChange] = useState(true);
     const {SetnewData} = useContext(PropertyContext);
     function showImage(data) {
-        setPath(`http://localhost:8080/${data.image}`);
+        setPath(`https://real-state-backend-6416.onrender.com/${data.image}`);
         setPathFlag(true);
         // console.log(path);
         console.log(data.image);
     }
 
-    let url = "http://localhost:8080/prop/v1/getproperty";
+    let url = "https://real-state-backend-6416.onrender.com/prop/v1/getproperty";
     useEffect(() => {
         // let token = localStorage.getItem("token");
         console.log(token);
@@ -56,7 +56,7 @@ const PropertyList = () => {
 
         axios
             .patch(
-                `http://localhost:8080/prop/v1/sold/${details._id}`,
+                `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
                 data,
                 {
                     headers: {

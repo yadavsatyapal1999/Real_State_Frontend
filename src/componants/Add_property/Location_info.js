@@ -24,7 +24,7 @@ export default function Location() {
         const data = AddProperty
         try {
 
-            let res = await axios.post("http://localhost:8080/prop/v1/addproperty", data, {
+            let res = await axios.post("https://real-state-backend-6416.onrender.com/prop/v1/addproperty", data, {
                 headers: {
                     "Authorization": token,
                     'Content-Type': 'multipart/form-data'
@@ -42,10 +42,12 @@ export default function Location() {
             } else {
 
                 alert("unable to save data make sure all required data filled");
+                
             }
         }
         catch (error) {
-            alert("Err in saving data All feild must be filled")
+            alert("Err in saving data All feild must be filled");
+            console.log(error);
         }
 
     }

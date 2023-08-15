@@ -12,7 +12,7 @@ const LogIn = () => {
   const onSubmit = (e) => {
     e.preventDefault(e);
     const { userid, password } = details;
-    let url = "http://localhost:8080/user/v1/login";
+    let url = "https://real-state-backend-6416.onrender.com/user/v1/login";
     axios
       .post(url, {
         email: userid,

@@ -71,7 +71,7 @@ const HomePage = () => {
     };
     // console.log(token, id);
     setSearchFlag(true);
-    let url = `http://localhost:8080/prop/v1/getproperty/${searchId}`;
+    let url = `https://real-state-backend-6416.onrender.com/prop/v1/getproperty/${searchId}`;
     axios
       .get(url,{headers})
       .then((res) => {

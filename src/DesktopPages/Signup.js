@@ -24,7 +24,7 @@ export default function SignUp() {
                         if(res.status == 200){
                             // localStorage.setItem("unique_id", res.data.data.unique_id);
                             window.alert("data Saved Sucessfully");
-                            
+                            navigate("/")
                         }else{
                            window.alert("failed");
                         }
@@ -45,36 +45,74 @@ export default function SignUp() {
         }
     }
 
-    return <div className="SignUp">
+    return (
+        <>
+            <div className="sinup-form">
+            <div className="SignUp">
         <form action="#" onSubmit={(event) => {
             handleSignUp(event);
         }} >
-            <img src={imgurl} alt="logo" />
+            <img style={{
+                marginLeft: "28%",
+                width: "200px",
+    height: "200px",
+    border: "1px solid gray",
+    borderRadius: "58%"
+            }} src={imgurl} alt="logo" />
             <br />
-            <p>Create New Account</p>
+            <p style={{
+                fontSize: "20px",
+                margin: "10px",
+                marginLeft: "31%",
+                fontWeight: "bold",
+                color: "#4C57B6"
+            }}  >Create New Account</p>
             <input id="email" type="email" placeholder="Mail Id" required
             value={email}
+            style={{margin: "10px"}}
                 onChange={(e) => {
                     Setemail(e.target.value)
                 }} />
             <br />
             <input id="password" type="password" placeholder="Password" required minLength="8"
             value={password}
+            style={{margin: "10px"}}
                 onChange={(e) => {
                     SetPassword(e.target.value)
                 }} />
             <br />
             <input id="confirm_password" type="password" placeholder="Confirm Password" required
             value={confirm}
+            style={{margin: "10px"}}
                 onChange={(e) => {
                     SetConfirm(e.target.value)
                 }} />
             <br />
-            <button className="btn_signup"  type="submit"> SignUp</button>
+            <button className="btn_signup" 
+             style={{
+              backgroundColor: "#4C57B6",
+              width:"95%",
+              borderRadius: "10px",
+              color:"wheat",
+              padding: "5px 0",
+              margin: "10px"
+            }} type="submit"> SignUp</button>
         </form>
 
-        <button className="btn" onClick={() => {
+        <button className="btn" 
+        style={{
+              backgroundColor: "#4C57B6",
+              width:"95%",
+              borderRadius: "10px",
+              color:"wheat",
+              padding: "5px 0",
+              margin: "10px"
+            }}
+        onClick={() => {
             navigate('/')
-        }}>SignIn</button>
+        }}>If User Exist : SignIn</button>
     </div>
+            </div>
+        </>
+    )
 }

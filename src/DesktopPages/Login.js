@@ -86,8 +86,13 @@ const LogIn = () => {
             onClick={(e) => {
               onSubmit(e);
             }}
-            className="btn custom-btn"
-            id="form-submit"
+            style={{
+              backgroundColor: "#4C57B6",
+              width:"95%",
+              borderRadius: "10px",
+              color:"wheat",
+              padding: "5px 0"
+            }}
           >
             LOGIN
           </button>

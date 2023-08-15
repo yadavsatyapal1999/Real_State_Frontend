@@ -8,6 +8,7 @@ import PropertyList from '../componants/propertyListing/PropertyList';
 import PropertySearch from '../componants/propertyListing/PropertySearch';
 import Sidebar from '../componants/Sidebar';
 import Nav from "../componants/Nav"
+import { GiToken } from 'react-icons/gi';
 
 const HomePage = () => {
   function clearData() {
@@ -58,58 +59,24 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [searchId, setSearchId] = useState("");
   const [searchFlag, setSearchFlag] = useState(false);
-  const [values, setValues] = useState({
-    property: "",
-    length: 0,
-    breadth: 0,
-    image: [],
-    area: 0,
-    _id: "",
-    mobile: "",
-    negotiable: "",
-    price: "",
-    ownership: "",
-    propertyAge: "",
-    propApproved: "",
-    propDescription: "",
-    bankLoan: "",
-    areaUnit: "",
-    bhk: "",
-    floorNum: "",
-    attached: "",
-    westToilet: "",
-    furnished: "",
-    parking: "",
-    lift: "",
-    electricity: "",
-    facing: "",
-    name: "",
-    postedBy: "",
-    saleType: "",
-    package: "",
-    ppdPackage: "",
-    email: "",
-    city: "",
-    addArea: "",
-    pincode: "",
-    address: "",
-    landmark: "",
-    latitude: "",
-    longitude: "",
-  });
+  const [values, setValues] = useState([]);
   useEffect(() => {
-    // console.log(values);
+    // console.log(values.data);
   }, [values]);
 
   function searchingById() {
-    let userid = localStorage.getItem("email");
+    let token = localStorage.getItem("token");
+    const headers = {
+      Authorization: token
+    };
     // console.log(token, id);
     setSearchFlag(true);
     let url = `http://localhost:8080/prop/v1/getproperty/${searchId}`;
     axios
-      .get(url)
+      .get(url,{headers})
       .then((res) => {
-        setValues(res.data);
+        console.log(res.data);
+        setValues([res.data.data]);
         setSearchId("");
       })
       .catch((e) => {

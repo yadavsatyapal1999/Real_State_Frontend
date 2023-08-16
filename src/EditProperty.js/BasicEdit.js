@@ -6,7 +6,7 @@ export default function BasicEdit({ SetPage }) {
 
 
     const {newData ,SetnewData} = useContext(PropertyContext)
-    console.log(newData);
+    // console.log(newData);
     const Navigate = useNavigate();
 
     return <div className="router">

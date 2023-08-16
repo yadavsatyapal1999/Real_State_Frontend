@@ -18,7 +18,7 @@ const PropertySearch = ({ values }) => {
 
     axios
       .patch(
-        `http://localhost:8080/pro/v1/sold/${details._id}`,
+        `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
         data,
         {
           headers: {
@@ -103,7 +103,7 @@ const PropertySearch = ({ values }) => {
                 onClick={() => setPathFlag(false)}
               >
 
-                <ImageView path={`http://localhost:8080/${properties.image}`} />
+                <ImageView path={`https://real-state-backend-6416.onrender.com/${properties.image}`} />
               </div>
             )}
         </>

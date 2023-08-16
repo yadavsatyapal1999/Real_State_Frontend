@@ -1,6 +1,7 @@
 /*Router is parent  of  form*/
 .router {
-    position: absolute;
+    position:absolute;
+    height:800px ;
 
 }
 

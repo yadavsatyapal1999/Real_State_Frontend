@@ -11,12 +11,17 @@ import PageIndicator from '../componants/Add_property/PageIndicator';
 
 
 export default function LocationEdit({ SetPage }) {
-    const { newData, SetnewData } = useContext(PropertyContext)
+
+
+    const { newData, SetnewData, SetPageNav,SetIsEdit } = useContext(PropertyContext)
     const Navigate = useNavigate()
     const [loader, Setloader] = useState(false)
     const id = newData._id;
+
+
     const handleSubmit = async () => {
-Setloader(true)
+
+        Setloader(true)
         try {
             const resp = await axios.put(`https://real-state-backend-6416.onrender.com/prop/v1/updateproperty/${id}`, newData, {
                 headers: {
@@ -24,7 +29,7 @@ Setloader(true)
                 }
             })
             if (resp.status == 200) {
-                
+
                 alert("Data edited Sucessfully")
                 Navigate("/home")
             }
@@ -38,7 +43,7 @@ Setloader(true)
             alert("Internal server error");
             console.log(err)
         }
-        finally{
+        finally {
             Setloader(false)
         }
 
@@ -54,7 +59,7 @@ Setloader(true)
             <div className="second_wrapper">
                 <div className="Nav"><Nav /></div>
                 <div>
-                <PageIndicator/>
+                    <PageIndicator />
                     <form className="outer_form" onSubmit={(event) => {
                         event.preventDefault();
                         handleSubmit();
@@ -166,11 +171,17 @@ Setloader(true)
                             </div>
                         </div>
 
-                        <div style={{marginLeft:"30%"}}>
-                        <button className="btn1" onClick={() => {
-                            SetPage(3)
-                        }}>Previous</button>
-                        <button className="btn2" type="submit">Add Property</button>
+                        <div style={{ marginLeft: "30%" }}>
+                            <button className="btn1" onClick={() => {
+                                SetPage(3);
+                                SetPageNav("General")
+                                SetIsEdit(true)
+                            }}>Previous</button>
+                            <button className="btn2" type="submit" onClick={() => {
+                                
+                                SetPageNav("Basic")
+                                SetIsEdit(true)
+                                }} >Add Property</button>
                         </div>
                     </form>
                 </div>

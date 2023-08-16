@@ -68,7 +68,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
 
 
-                            <input type="file" name="propertyimage" id="propertyimage" onChange={(e) => {
+                            <input type="file" name="propertyimage" id="propertyimage" style={{display:"none"}} onChange={(e) => {
                                 SetFile(e.target.files[0]);
                             }} />
                             <label htmlFor="propertyimage" >

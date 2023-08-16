@@ -6,7 +6,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import logo from "../images/realstate.png"
 import Loader from "../componants/Add_property/Loader"
-import { useState } from "react";
+
 
 
 

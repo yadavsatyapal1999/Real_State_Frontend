@@ -26,7 +26,7 @@ function SignUp() {
 
     axios
       .post(
-        "http://localhost:8080/user/v1/register",
+        "https://real-state-backend-6416.onrender.com/user/v1/register",
         {
           email: email,
           password: password,

@@ -12,6 +12,9 @@ const LogIn = () => {
   const onSubmit = (e) => {
     e.preventDefault(e);
     const { userid, password } = details;
+    if(userid == "" || password == ""){
+      alert("Email or paasword should not be empty")
+    }
     let url = "https://real-state-backend-6416.onrender.com/user/v1/login";
     axios
       .post(url, {
@@ -19,8 +22,8 @@ const LogIn = () => {
         password: password,
       })
       .then((res) => {
-        console.log("login resp data")
-        console.log(res.data.Token);
+        // console.log("login resp data")
+        // console.log(res.data.Token);
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("token", res.data.Token); // Modified to get token

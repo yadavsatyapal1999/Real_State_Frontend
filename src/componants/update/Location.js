@@ -28,7 +28,7 @@ function Location({
     let token = localStorage.getItem("token");
     let id = localStorage.getItem("userID");
 
-    let url = "http://localhost:8080/prop/v1/updateproperty";
+    let url = "https://real-state-backend-6416.onrender.com/prop/v1/updateproperty";
 
     // console.log(formData);
     if (status === "add") {

@@ -11,28 +11,30 @@ const PropertySearch = ({ values }) => {
   let token = localStorage.getItem("token");
   let id = localStorage.getItem("userID");
   const [pathFlag, setPathFlag] = useState(false);
-
+  const [change,setChange] = useState(true)
   function update(details) {
-    console.log(details._id);
+    console.log(details);
     let data = { status: "Sold" };
-
+    if(details.status == "sold"){
+      alert("Property has been sold")
+    }
     axios
-      .patch(
-        `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
-        data,
-        {
-          headers: {
-            token: token,
-            id: id,
-          },
-        }
-
-      )
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => alert("Unable to Update"));
-  }
+        .patch(
+            `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
+            data,
+            {
+                headers: {
+                    'Authorization' : token
+                },
+            }
+        )
+        .then((res) => {
+            // console.log(res.data);
+            setChange(!change);
+            window.location.reload();
+        })
+        .catch((error) => alert("Unable to sell"));
+}
   return (
     <>
       {values._id === "" ? (

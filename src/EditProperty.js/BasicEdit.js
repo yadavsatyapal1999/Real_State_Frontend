@@ -3,7 +3,7 @@ import { PropertyContext } from "../componants/Add_property/ContextProvider";
 import { useNavigate } from "react-router-dom";
 import Sidebar from '../componants/Sidebar';
 import Nav from '../componants/Nav';
-
+import PageIndicator from '../componants/Add_property/PageIndicator';
 export default function BasicEdit({ SetPage }) {
 
 
@@ -18,7 +18,7 @@ export default function BasicEdit({ SetPage }) {
         <div className="second_wrapper">
             <div className="Nav"><Nav /></div>
             <div>
-
+            <PageIndicator/>
                 <form action="#" className="outer_form" >
                     <div className="form">
 
@@ -131,10 +131,12 @@ export default function BasicEdit({ SetPage }) {
                             </select>
                         </div>
                     </div>
+                    <div style={{marginLeft:"30%"}}>
                     <button className="btn1" onClick={() => Navigate("/home")}>Cancel</button>
                     <button className="btn2" onClick={() => {
                         SetPage(2);
                     }} >Save & Next</button>
+                    </div>
                 </form>
             </div>
         </div>

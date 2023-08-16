@@ -30,6 +30,9 @@ const LogIn = () => {
       .then((res) => {
         // console.log("login resp data")
         // console.log(res.data.Token);
+        // if(res.status == "400"){
+          
+        // }
         localStorage.setItem("email", res.data.email);
         localStorage.setItem("name", res.data.name);
         localStorage.setItem("token", res.data.Token); // Modified to get token
@@ -38,7 +41,8 @@ const LogIn = () => {
         Setloader(false)
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        alert("Please enter correct Email or password")
         Setloader(false)
       });
   };

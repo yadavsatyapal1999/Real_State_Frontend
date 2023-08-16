@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../componants/Sidebar';
 import Nav from '../componants/Nav';
 import Loader from "../componants/Add_property/Loader";
-
+import PageIndicator from '../componants/Add_property/PageIndicator';
 
 
 
@@ -54,7 +54,7 @@ Setloader(true)
             <div className="second_wrapper">
                 <div className="Nav"><Nav /></div>
                 <div>
-
+                <PageIndicator/>
                     <form className="outer_form" onSubmit={(event) => {
                         event.preventDefault();
                         handleSubmit();
@@ -166,10 +166,12 @@ Setloader(true)
                             </div>
                         </div>
 
+                        <div style={{marginLeft:"30%"}}>
                         <button className="btn1" onClick={() => {
                             SetPage(3)
                         }}>Previous</button>
                         <button className="btn2" type="submit">Add Property</button>
+                        </div>
                     </form>
                 </div>
             </div>

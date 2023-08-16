@@ -3,7 +3,12 @@ import "../styles/Login.css";
 import logo from "../images/realstate.png"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "../componants/Add_property/Loader"
+
+
+
 const LogIn = () => {
+  const [loader, Setloader] = useState(false)
   const [details, setDetails] = useState({
     userid: "",
     password: "",
@@ -11,8 +16,9 @@ const LogIn = () => {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault(e);
+    Setloader(true)
     const { userid, password } = details;
-    if(userid == "" || password == ""){
+    if (userid == "" || password == "") {
       alert("Email or paasword should not be empty")
     }
     let url = "https://real-state-backend-6416.onrender.com/user/v1/login";
@@ -29,12 +35,17 @@ const LogIn = () => {
         localStorage.setItem("token", res.data.Token); // Modified to get token
         localStorage.setItem("userId", res.data.userId);
         navigate("/home");
+        Setloader(false)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        Setloader(false)
+      });
   };
 
   return (
     <div style={{ backgroundColor: "#e1f9f4" }}>
+      {loader ? <Loader/> : 
       <div className="formdiv">
         <form
           onSubmit={(e) => onSubmit(e)}
@@ -91,9 +102,9 @@ const LogIn = () => {
             }}
             style={{
               backgroundColor: "#4C57B6",
-              width:"95%",
+              width: "95%",
               borderRadius: "10px",
-              color:"wheat",
+              color: "wheat",
               padding: "5px 0"
             }}
           >
@@ -105,6 +116,7 @@ const LogIn = () => {
           </span>
         </form>
       </div>
+       }
     </div>
   );
 };

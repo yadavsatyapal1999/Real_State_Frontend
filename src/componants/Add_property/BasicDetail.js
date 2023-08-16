@@ -6,7 +6,8 @@ import { PropertyContext } from "./ContextProvider";
 import PageIndicator from "./PageIndicator";
 import { OnClickBasicDetail } from "./OnClickLogic";
 import Sidebar from "../Sidebar";
-import Nav from "../Nav"
+import Nav from "../Nav";
+
 export default function BasicDetail() {
 
     

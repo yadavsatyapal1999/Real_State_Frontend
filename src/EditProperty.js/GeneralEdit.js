@@ -4,6 +4,7 @@ import { PropertyContext } from "../componants/Add_property/ContextProvider";
 import Sidebar from '../componants/Sidebar';
 import Nav from '../componants/Nav';
 import { IoCameraSharp } from "react-icons/io5";
+import PageIndicator from '../componants/Add_property/PageIndicator';
 
 
 export default function GeneralEdit({ SetPage }) {
@@ -19,7 +20,7 @@ export default function GeneralEdit({ SetPage }) {
         <div className="second_wrapper">
             <div className="Nav"><Nav /></div>
             <div>
-
+            <PageIndicator/>
                 <form className="outer_form" >
                     <div className="form">
 
@@ -128,7 +129,8 @@ export default function GeneralEdit({ SetPage }) {
                             </select>
                         </div>
                     </div>
-                    <button className="btn1" onClick={() => {
+                   <div style={{marginLeft:"30%"}}>
+                   <button className="btn1" onClick={() => {
                         SetPage(2)
                     }}>Previous</button>
                     <button className="btn2" onClick={() => {
@@ -140,6 +142,7 @@ export default function GeneralEdit({ SetPage }) {
                             })
                         }
                     }} >Save & Next</button>
+                   </div>
                 </form>
             </div>
         </div>

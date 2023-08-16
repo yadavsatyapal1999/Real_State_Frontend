@@ -6,7 +6,7 @@ import { PropertyContext } from "./ContextProvider";
 // Button function as save&next and previous button 
 // which is required in all add property age 
 
-export default function Button({ backWardPath, forWardPath, children1, children2, forward_action, backward_action,nextpage,prevpage}) {
+export default function Button({ backWardPath, forWardPath, children1, children2, forward_action, backward_action,nextpage,prevPage}) {
 
 const {SetPageNav } = useContext(PropertyContext)
 
@@ -14,8 +14,9 @@ const {SetPageNav } = useContext(PropertyContext)
     return <div className="btn">
         <button className="btn1" onClick={() =>
              { 
+                SetPageNav(prevPage)
                 navigate(backWardPath)
-                SetPageNav(prevpage)
+                
 
                 }}>{children1}</button>
         {children2 != "Add Property" ?

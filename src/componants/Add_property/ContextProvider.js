@@ -66,8 +66,18 @@ export function ContextFunction({ children }) {
         // It will store all detail od property and this data will be saved into data base
     })
 
-    const [newData,SetnewData] = useState() ;
-const[PageNav ,SetPageNav] = useState("Basic")
+    // This state would remember data when user click on edit
+    const [newData, SetnewData] = useState();
+
+    // This page would track page navigation and propvide that data to Page Indicator
+    const [PageNav, SetPageNav] = useState("Basic")
+
+    // This State would check that wether is it AddProperty or EditProperty
+
+    const [IsEdit, SetIsEdit] = useState();
+console.log(IsEdit)
+
+    console.log(PageNav)
 
     return <PropertyContext.Provider
         value={{
@@ -83,8 +93,10 @@ const[PageNav ,SetPageNav] = useState("Basic")
             SetAddProperty,
             newData,
             SetnewData,
-            PageNav ,
-            SetPageNav
+            PageNav,
+            SetPageNav,
+            IsEdit,
+            SetIsEdit
         }}>
         {children}
     </PropertyContext.Provider>

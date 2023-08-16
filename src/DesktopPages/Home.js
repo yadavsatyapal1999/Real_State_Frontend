@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai";
@@ -9,8 +9,14 @@ import PropertySearch from '../componants/propertyListing/PropertySearch';
 import Sidebar from '../componants/Sidebar';
 import Nav from "../componants/Nav"
 import { GiToken } from 'react-icons/gi';
+import { PropertyContext } from '../componants/Add_property/ContextProvider';
+
+
 
 const HomePage = () => {
+
+const {SetIsEdit} = useContext(PropertyContext);
+
   function clearData() {
     setSearchFlag(false);
     setValues({
@@ -142,7 +148,10 @@ const HomePage = () => {
             </div>
             <button
               type="button"
-              onClick={() => navigate("/addproperty/basic_detail")}
+              onClick={() => {
+                navigate("/addproperty/basic_detail")
+                SetIsEdit(false)
+              }}
               className="btn btn-info"
               style={{
                 fontSize: "larger",

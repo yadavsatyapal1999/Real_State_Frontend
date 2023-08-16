@@ -8,7 +8,7 @@ import PageIndicator from '../componants/Add_property/PageIndicator';
 export default function PropertyEdit({ SetPage }) {
 
 
-    const { newData, SetnewData } = useContext(PropertyContext)
+    const { newData, SetnewData, SetPageNav,SetIsEdit } = useContext(PropertyContext)
 
 
     return <div className="router">
@@ -18,7 +18,7 @@ export default function PropertyEdit({ SetPage }) {
         <div className="second_wrapper">
             <div className="Nav"><Nav /></div>
             <div>
-            <PageIndicator/>
+                <PageIndicator />
                 <form className="outer_form">
                     <div className="form">
 
@@ -205,13 +205,17 @@ export default function PropertyEdit({ SetPage }) {
                                 value={newData.electricity} />
                         </div>
                     </div>
-                    <div style={{marginLeft:"30%"}}>
-                    <button className="btn1" onClick={() => {
-                        SetPage(1)
-                    }}>Previous</button>
-                    <button className="btn2" onClick={() => {
-                        SetPage(3)
-                    }}>Save & Next</button>
+                    <div style={{ marginLeft: "30%" }}>
+                        <button className="btn1" onClick={() => {
+                            SetPage(1)
+                            SetPageNav("Basic")
+                            SetIsEdit(true)
+                        }}>Previous</button>
+                        <button className="btn2" onClick={() => {
+                            SetPage(3)
+                            SetPageNav("General")
+                            SetIsEdit(true)
+                        }}>Save & Next</button>
                     </div>
                 </form>
             </div>

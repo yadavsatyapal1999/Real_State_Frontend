@@ -9,7 +9,7 @@ import PageIndicator from '../componants/Add_property/PageIndicator';
 
 export default function GeneralEdit({ SetPage }) {
 
-    const { newData, SetnewData } = useContext(PropertyContext)
+    const { newData, SetnewData, SetPageNav,SetIsEdit } = useContext(PropertyContext)
     const [file, SetFile] = useState();
 
 
@@ -20,7 +20,7 @@ export default function GeneralEdit({ SetPage }) {
         <div className="second_wrapper">
             <div className="Nav"><Nav /></div>
             <div>
-            <PageIndicator/>
+                <PageIndicator />
                 <form className="outer_form" >
                     <div className="form">
 
@@ -69,7 +69,7 @@ export default function GeneralEdit({ SetPage }) {
                             <br />
 
 
-                            <input type="file" name="propertyimage" id="propertyimage" style={{display:"none"}} onChange={(e) => {
+                            <input type="file" name="propertyimage" id="propertyimage" style={{ display: "none" }} onChange={(e) => {
                                 SetFile(e.target.files[0]);
                             }} />
                             <label htmlFor="propertyimage" >
@@ -129,20 +129,24 @@ export default function GeneralEdit({ SetPage }) {
                             </select>
                         </div>
                     </div>
-                   <div style={{marginLeft:"30%"}}>
-                   <button className="btn1" onClick={() => {
-                        SetPage(2)
-                    }}>Previous</button>
-                    <button className="btn2" onClick={() => {
-                        SetPage(4);
-                        if (file != null || file != undefined) {
-                            SetnewData({
-                                ...newData,
-                                propertyimage: file
-                            })
-                        }
-                    }} >Save & Next</button>
-                   </div>
+                    <div style={{ marginLeft: "30%" }}>
+                        <button className="btn1" onClick={() => {
+                            SetPage(2);
+                            SetPageNav("Add")
+                            SetIsEdit(true)
+                        }}>Previous</button>
+                        <button className="btn2" onClick={() => {
+                            SetPage(4);
+                            SetPageNav("Location")
+                            SetIsEdit(true)
+                            if (file != null || file != undefined) {
+                                SetnewData({
+                                    ...newData,
+                                    propertyimage: file
+                                })
+                            }
+                        }} >Save & Next</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -6,6 +6,8 @@ import { MdModeEditOutline } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import ImageView from './ImageView';
 import {  PropertyContext } from '../Add_property/ContextProvider';
+
+
 const PropertyList = () => {
     
     let token = localStorage.getItem("token");
@@ -15,7 +17,9 @@ const PropertyList = () => {
     const [path, setPath] = useState("");
     const [data, setData] = useState([]);
     const [change, setChange] = useState(true);
-    const {SetnewData} = useContext(PropertyContext);
+    const {SetnewData,SetIsEdit} = useContext(PropertyContext);
+
+
     function showImage(data) {
         setPath(`https://real-state-backend-6416.onrender.com/${data.image}`);
         setPathFlag(true);
@@ -50,6 +54,9 @@ const PropertyList = () => {
             .catch((err) => navigate("/"));
     }, [ token, url, change, navigate]);
 
+
+
+
     function update(details) {
         console.log(details._id);
         let data = { status: "Sold" };
@@ -69,6 +76,8 @@ const PropertyList = () => {
                 setChange(!change);
             })
             .catch((error) => alert("Unable to sell"));
+
+            
     }
     return (
         <>
@@ -132,6 +141,7 @@ const PropertyList = () => {
                                                     localStorage.setItem("PropertyData",properties.data);
                                                    
                                                     navigate("/editproperty" , { state: properties});
+                                                    SetIsEdit(true);
                                                     // console.log(properties)
                                                     SetnewData(properties);
                                                     // console.log()

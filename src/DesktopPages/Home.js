@@ -15,8 +15,59 @@ import { PropertyContext } from '../componants/Add_property/ContextProvider';
 
 const HomePage = () => {
 
-const {SetIsEdit} = useContext(PropertyContext);
+const {SetIsEdit,SetBasicDetail,SetPropertyDetail,SetGeneral_info,SetLocation_info,SetAddProperty,SetPageNav} = useContext(PropertyContext);
+useEffect(()=>{
 
+  SetBasicDetail(
+    {
+      property_type: "",
+      price: "",
+      negotiable: "",
+      ownerShip: "",
+      property_age: "",
+      property_approved: "",
+      property_description: "",
+      bank_loan: ""
+    }
+  );
+                SetGeneral_info({
+                  owner_name: "",
+                  mobile: "",
+                  postedby: "",
+                  saletype: "",
+                  featured: "",
+                  ppdpackage: ""
+                });
+                SetLocation_info({
+                  email: "",
+        city: "",
+        addressarea: "",
+        pincode: "",
+        address: "",
+        landmark: "",
+        longitude: "",
+        latitude: ""
+                });
+                SetPropertyDetail({
+                  length: "",
+                  breath: "",
+                  area: "",
+                  area_unit: "",
+                  bhk: "",
+                  floor: "",
+                  attached: "",
+                  western: "",
+                  furnished: "",
+                  parking: "",
+                  lift: "",
+                  electricity: "",
+                  facing: ""
+                });
+                // SetAddProperty({
+
+                // });
+                SetPageNav("Basic")
+},[])
   function clearData() {
     setSearchFlag(false);
     setValues({

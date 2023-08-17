@@ -39,23 +39,25 @@ export default function Location() {
             })
             if (res.status == 200) {
 
-               /* SetBasicDetail("");
-                SetGeneral_info("");
-                SetLocation_info("");
-                SetAddProperty("");*/
+                // SetBasicDetail("");
+                // SetGeneral_info("");
+                // SetLocation_info("");
+                // SetAddProperty("");
                 alert("Data Saved sucessFully");
                 navigate('/home')
-               // window.location.reload();
+            //    window.location.reload();
 
             } else {
-
-                alert("unable to save data make sure all required data filled");
                 Setloader(false)
+                alert("unable to save data make sure all required data filled");
+                console.log(res.status);
             }
         }
         catch (error) {
-            alert("Err in saving data All feild must be filled");
+            Setloader(false);
+            alert("Err in saving data All field must be filled");
             console.log(error);
+            
         }
         finally {
             Setloader(false);

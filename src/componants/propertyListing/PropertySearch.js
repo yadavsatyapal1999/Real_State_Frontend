@@ -5,7 +5,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import ImageView from './ImageView';
 import { useNavigate } from 'react-router-dom';
 
-const PropertySearch = ({ values }) => {
+const PropertySearch = ({ values,update,change }) => {
   console.log(values)
   const navigate = useNavigate();
   let token = localStorage.getItem("token");
@@ -13,27 +13,27 @@ const PropertySearch = ({ values }) => {
   const [pathFlag, setPathFlag] = useState(false);
   
 
-    function update(details) {
-      console.log(details._id);
-      let data = { status: "Sold" };
-      // const [change,setChange] = useState(details.status);
-      axios
-        .patch(
-          `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
-          data,
-          {
-            headers: {
-              'Authorization' : token
-            },
-          }
+    // function update(details) {
+    //   console.log(details._id);
+      
+    //   // const [change,setChange] = useState(details.status);
+    //   axios
+    //     .patch(
+    //       `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
+          
+    //       {
+    //         headers: {
+    //           'Authorization' : token
+    //         },
+    //       }
   
-        )
-        .then((res) => {
-          console.log(res.data);
-          window.location.reload();
-        })
-        .catch((err) => alert("Unable to Update"));
-    }
+    //     )
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       // window.location.reload();
+    //     })
+    //     .catch((err) => alert("Unable to Update"));
+    // }
   
   return (
     <>
@@ -71,7 +71,7 @@ const PropertySearch = ({ values }) => {
                 <th scope="col">{properties.mobile}</th>
                 <th scope="col">{properties.area}</th>
                 <th scope="col">{properties.views}</th>
-                <th onClick={() => update(properties)} scope='col'>
+                <th onClick={() => {change && update(properties)}} scope='col'>
                   <button style={{ backgroundColor: "#F5FAF5", color: "#416899", borderRadius: "5px", border: "1px solid rgb(228 233 233)" }} className="soldbtn">{properties.status}</button>
                 </th>
                 <th  scope='col'>{properties.daysleft}</th>

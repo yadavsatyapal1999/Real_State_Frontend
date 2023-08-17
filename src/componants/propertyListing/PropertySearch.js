@@ -6,35 +6,35 @@ import ImageView from './ImageView';
 import { useNavigate } from 'react-router-dom';
 
 const PropertySearch = ({ values }) => {
-  // console.log(values)
+  console.log(values)
   const navigate = useNavigate();
   let token = localStorage.getItem("token");
-  let id = localStorage.getItem("userID");
+  let id = localStorage.getItem("userId");
   const [pathFlag, setPathFlag] = useState(false);
-  const [change,setChange] = useState(true)
-  function update(details) {
-    console.log(details);
-    let data = { status: "Sold" };
-    if(details.status == "sold"){
-      alert("Property has been sold")
-    }
-    axios
+  
+
+    function update(details) {
+      console.log(details._id);
+      let data = { status: "Sold" };
+      // const [change,setChange] = useState(details.status);
+      axios
         .patch(
-            `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
-            data,
-            {
-                headers: {
-                    'Authorization' : token
-                },
-            }
+          `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
+          data,
+          {
+            headers: {
+              'Authorization' : token
+            },
+          }
+  
         )
         .then((res) => {
-            // console.log(res.data);
-            setChange(!change);
-            window.location.reload();
+          console.log(res.data);
+          window.location.reload();
         })
-        .catch((error) => alert("Unable to sell"));
-}
+        .catch((err) => alert("Unable to Update"));
+    }
+  
   return (
     <>
       {values._id === "" ? (

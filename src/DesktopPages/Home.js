@@ -53,6 +53,7 @@ const HomePage = () => {
       longitude: "",
 
     });
+    window.location.reload();
   }
   // let token = localStorage.getItem("token");
   // let id = localStorage.getItem("userID");

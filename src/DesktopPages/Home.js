@@ -93,7 +93,7 @@ const HomePage = () => {
     let token = localStorage.getItem("token");
     axios
         .patch(
-            `http://localhost:8080/prop/v1/sold/${details._id}`,
+            `https://real-state-backend-6416.onrender.com/prop/v1/sold/${details._id}`,
             data,
             {
                 headers: {

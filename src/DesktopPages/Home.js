@@ -53,7 +53,7 @@ const HomePage = () => {
       longitude: "",
 
     });
-    window.location.reload();
+    
   }
   // let token = localStorage.getItem("token");
   // let id = localStorage.getItem("userID");
@@ -61,6 +61,7 @@ const HomePage = () => {
   const [searchId, setSearchId] = useState("");
   const [searchFlag, setSearchFlag] = useState(false);
   const [values, setValues] = useState([]);
+  const [change, setChange] = useState(true);
   useEffect(() => {
     // console.log(values.data);
   }, [values]);
@@ -86,6 +87,27 @@ const HomePage = () => {
       });
   }
 
+  function update(details) {
+    console.log(details._id);
+    let data = { status: "Sold" };
+    let token = localStorage.getItem("token");
+    axios
+        .patch(
+            `http://localhost:8080/prop/v1/sold/${details._id}`,
+            data,
+            {
+                headers: {
+                    'Authorization' : token
+                },
+            }
+        )
+        .then((res) => {
+            console.log(res.data);
+            setChange(false);
+            setValues([res.data.data])
+        })
+        .catch((error) => alert("Unable to sell"));
+}
   return (
     <div className='container-fluid'>
       <div className='row flex-nowrap'>
@@ -192,11 +214,11 @@ const HomePage = () => {
                   <span className="ms-1 d-none d-sm-inline">Clear</span>
                 </button>
               </div>
-              <PropertySearch values={values} />
+              <PropertySearch values={values} update={update} change={change} />
             </>
           ) : (
             <>
-              <PropertyList />
+              <PropertyList values={values} update={update} change={change} />
             </>
           )}
           </div>
